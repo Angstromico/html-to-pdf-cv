@@ -3,15 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manuel Morales – Desarrollador Full Stack</title>
+    <title>
+      Manuel Morales – Desarrollador Full Stack & Arquitecto de Integración
+    </title>
     <style>
+      /* Estilos base */
       body {
-        font-family: 'Segoe UI', sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
         background: #f9f9f9;
         color: #333;
         display: flex;
+        font-size: 10pt;
       }
 
       aside {
@@ -25,8 +29,9 @@
       aside h2 {
         font-size: 1.2rem;
         margin-top: 1.5rem;
-        border-bottom: 1px solid #555;
+        border-bottom: 1px solid #7c91a7;
         padding-bottom: 0.3rem;
+        color: #f0f4f8;
       }
 
       aside ul {
@@ -57,25 +62,42 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        margin-bottom: 1rem;
       }
 
       header h2 {
-        color: #cdd3d4;
+        color: #aebecd;
+        font-size: 1.1rem;
       }
 
       header .contact {
         font-size: 0.9rem;
         line-height: 1.4;
         font-weight: bold;
+        text-align: right;
       }
 
       header a {
-        color: #6495ed;
+        color: #8fa0ba;
+      }
+
+      header a:hover {
+        color: #fff;
       }
 
       header h1 {
         margin: 0;
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+
+      header p {
+        max-width: 900px;
+        margin: 0.5rem 0 0 0;
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 300;
+        border-top: 1px solid #3b4a5a;
+        padding-top: 0.8rem;
       }
 
       section {
@@ -85,9 +107,11 @@
       }
 
       h2 {
-        color: #587491;
+        color: #2c3e50;
         margin-top: 2rem;
         font-size: 1.4rem;
+        border-bottom: 2px solid #587491;
+        padding-bottom: 0.2rem;
       }
 
       ul {
@@ -96,34 +120,35 @@
 
       .project,
       .job {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
       }
 
       .meta {
         font-style: italic;
-        color: #555;
-      }
-
-      footer {
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 2rem;
         color: #777;
+        font-size: 0.95rem;
+        display: block;
+        margin-top: 0.2rem;
+        margin-bottom: 0.5rem;
       }
 
-      a {
-        color: #ddd;
-        text-decoration: none;
+      .job strong {
+        font-size: 1.1rem;
+        color: #3b4a5a;
       }
 
-      a:hover {
-        text-decoration: underline;
+      .project strong {
+        font-size: 1.05rem;
+        color: #3b4a5a;
       }
+
       .section {
         display: flex;
         justify-content: space-between;
         width: 100%;
       }
+
+      /* Ajuste de dimensiones para vista de impresión */
       html,
       body {
         width: 1200px;
@@ -140,7 +165,9 @@
         padding: 0;
         margin: 0;
         width: 750px;
-        margin-left: 1rem;
+        margin-left: 1.5rem;
+        margin-right: 0.5rem;
+        padding-top: 1rem;
       }
       * {
         box-sizing: border-box;
@@ -153,6 +180,22 @@
         size: 1200px 1400px;
         margin: 0;
       }
+
+      .skills-group {
+        margin-top: 0.5rem;
+      }
+      .skills-group strong {
+        display: block;
+        margin-top: 0.8rem;
+        font-weight: bold;
+        color: #cdd3d4;
+      }
+      .skills-group li {
+        font-size: 0.95rem;
+      }
+      span {
+        font-weight: 700;
+      }
     </style>
   </head>
   <body>
@@ -161,7 +204,7 @@
         <div class="interior">
           <div>
             <h1>Manuel Morales</h1>
-            <h2>Desarrollador Full Stack</h2>
+            <h2>Desarrollador Full Stack & Arquitecto de Integración</h2>
           </div>
           <div class="contact">
             <div>
@@ -177,16 +220,18 @@
               >
             </div>
             <div>+58 414 4021058</div>
-            <div>Valencia - Carabobo</div>
+            <div>Valencia - Carabobo, Venezuela</div>
           </div>
         </div>
-        <h2>Perfil</h2>
         <p>
-          Desarrollador web Full Stack creativo y proactivo con más de cuatro
-          años de experiencia brindando soluciones digitales escalables para
-          empresas en Venezuela, Costa Rica y España. Especializado en
-          desarrollo Full Stack, diseño mobile-first, arquitectura optimizada
-          para SEO y contribuciones de código abierto.
+          Desarrollador Full Stack con más de cuatro años de experiencia,
+          especializado en el **análisis de procesos** de negocio y el **diseño
+          de arquitecturas de integración de datos** para la automatización de
+          flujos de trabajo administrativos y operativos. Experiencia comprobada
+          en el uso de metodologías ágiles (Scrum) y en la gestión asertiva de
+          versiones y despliegues (CI/CD, Docker). Mi enfoque es crear
+          soluciones informáticas robustas y escalables que garanticen el
+          correcto funcionamiento y la eficiencia organizacional.
         </p>
       </header>
 
@@ -198,38 +243,46 @@
             <span class="meta">España (Remoto) · Sep 2024 – Presente</span>
             <ul>
               <li>
-                MongoDB, Express.js, React.js, Node.js, TypeScript, HTML, CSS
+                Implementación de
+                <span>arquitecturas de microservicios</span> (MERN Stack) para
+                soluciones empresariales escalables.
               </li>
               <li>
-                Pipelines CI/CD, GitHub Actions, Docker, metodologías ágiles,
-                servicios de Azure
+                Diseño de <span>esquemas de bases de datos</span> (MongoDB,
+                PostgreSQL) para el almacenamiento de información crítica.
+              </li>
+              <li>
+                Gestión y <span>control de versiones</span> de forma asertiva,
+                manejando despliegues automatizados y seguimiento de releases
+                mediante <span>Pipelines CI/CD, GitHub Actions y Docker</span>.
               </li>
             </ul>
           </div>
           <div class="job">
-            <strong>Establishment Labs</strong>
+            <strong>Establishment Labs / Qanta Media</strong>
             <span class="meta">Costa Rica (Remoto) · Ene 2022 – Sep 2024</span>
             <ul>
               <li>
-                Lanzamiento del sitio web Mia Femtech™ utilizando Vue, Nuxt y
-                TypeScript
+                Contribución al
+                <span>diseño de la arquitectura headless</span> (Vue/Nuxt +
+                Strapi) para una
+                <span>integración fluida y eficiente</span> entre el CMS y el
+                front-end de plataformas de alto tráfico.
               </li>
               <li>
-                Proyecto desarrollado mediante subcontratación con Qanta Media
+                <span>Análisis de requerimientos</span> de negocio para la
+                implementación de formularios transaccionales y la
+                <span>automatización</span> de la gestión de contenido.
               </li>
-              <li>React.js, Vue, Nuxt, Node.js, Laravel, MySQL</li>
-            </ul>
-          </div>
-          <div class="job">
-            <strong>Qanta Media</strong>
-            <span class="meta">Costa Rica (Remoto) · Jun 2021 – Sep 2024</span>
-            <ul>
               <li>
-                Desarrollo de aplicaciones full stack con React, Next.js, Strapi
-                y PostgreSQL
+                <span>Mantenimiento y seguimiento</span> continuo a las
+                plataformas y a los integradores, velando por su correcto
+                funcionamiento operativo y seguridad.
               </li>
-              <li>Integración de CMS para contenido dinámico</li>
-              <li>Soporte técnico especializado para Establishment Labs</li>
+              <li>
+                Desarrollo Full Stack con React.js, Vue, Nuxt, Node.js, Laravel,
+                MySQL y PostgreSQL.
+              </li>
             </ul>
           </div>
           <div class="job">
@@ -237,71 +290,127 @@
             <span class="meta">Colombia (Remoto) · Jun 2021 – Ene 2022</span>
             <ul>
               <li>
-                Desarrollo de temas y plugins personalizados para WordPress
+                <span>Análisis de los procesos</span> internos para el
+                desarrollo de temas y plugins personalizados en WordPress que
+                <span>automatizaron flujos de trabajo</span> específicos.
               </li>
               <li>
-                HTML, CSS, JavaScript, TypeScript, React, Next.js, Laravel,
-                NestJS, Prisma, PostgreSQL, Heroku
+                Participación en el
+                <span>diseño de la arquitectura de integración de datos</span>
+                entre sistemas mediante NestJS, Prisma y PostgreSQL.
+              </li>
+              <li>
+                Aplicación de <span>metodologías de desarrollo ágil</span> para
+                el control y seguimiento de la entrega de soluciones.
               </li>
             </ul>
           </div>
 
-          <h2>Proyectos</h2>
+          <h2>Proyectos Clave (Automatización e Integración)</h2>
           <div class="project">
-            <strong>Mia Femtech™</strong>
-            <span class="meta">Oct 2023 – Feb 2024</span>
-            <p>
-              Nuevo sitio web de Establishment Labs que presenta Mia®, un
-              procedimiento innovador de implantes mamarios.
-            </p>
-            <ul>
-              <li>Desarrollo del front-end desde cero con Vue 3 y Nuxt</li>
-              <li>
-                Implementación de formularios, blog, buscador de clínicas y
-                testimonios
-              </li>
-            </ul>
-          </div>
-          <div class="project">
-            <strong>Motiva®</strong>
-            <span class="meta">Ene 2022 – Oct 2023</span>
-            <p>
-              Sitio web principal de Establishment Labs, donde se muestran sus
-              productos, cirugías y asistencia a pacientes.
-            </p>
-            <ul>
-              <li>Mantenimiento y mejora del front-end en Vue 3</li>
-              <li>Uso de WordPress headless para la gestión de contenido</li>
-            </ul>
-          </div>
-          <div class="project">
-            <strong>Sig Velzia Web®</strong>
+            <strong>Sig Velzia Web® (Plataforma de Garantía)</strong>
             <span class="meta">Sep 2024 – Nov 2025</span>
             <p>
               Plataforma de garantía para la administración de productos
               comercializados por Velzia®.
             </p>
             <ul>
-              <li>Desarrollo de la plataforma de garantías de Velzia®</li>
               <li>
-                Mejoras y refactorización de secciones, formularios y lógica de
-                negocio tanto en el Back End como en el Front End
+                Mejoras y
+                <span>refactorización de la lógica de negocio</span> tanto en el
+                Back End como en el Front End para **automatizar** los procesos
+                de gestión de garantías.
               </li>
               <li>
-                Optimización en la eficiencia de llamadas a endpoints del API de
-                Sig Velzia.
+                <span>Optimización en la eficiencia</span> de llamadas a
+                endpoints del API de Sig Velzia (mantenimiento y rendimiento).
+              </li>
+              <li>
+                <span>Diseño de esquemas de base de datos</span> para el
+                almacenamiento estructurado de la información de garantía.
+              </li>
+            </ul>
+          </div>
+          <div class="project">
+            <strong>Mia Femtech™ (Integración de Datos Headless)</strong>
+            <span class="meta">Oct 2023 – Feb 2024</span>
+            <p>
+              Nuevo sitio web de Establishment Labs que requirió un alto nivel
+              de integración de datos.
+            </p>
+            <ul>
+              <li>
+                Desarrollo del front-end desde cero con Vue 3 y Nuxt, centrado
+                en la <span>integración de datos</span> de blog, buscadores de
+                clínicas y testimonios.
+              </li>
+              <li>
+                Implementación de formularios complejos, asegurando la
+                <span>integración de datos con sistemas de CRM</span> internos.
+              </li>
+            </ul>
+          </div>
+          <div class="project">
+            <strong>Motiva® (Mantenimiento y Optimización de Flujo)</strong>
+            <span class="meta">Ene 2022 – Oct 2023</span>
+            <p>
+              Sitio web principal de Establishment Labs, demostrando productos y
+              asistencia a pacientes.
+            </p>
+            <ul>
+              <li>
+                Mantenimiento y mejora del front-end en Vue 3, asegurando la
+                <span>integración continua y eficiente</span> con WordPress
+                headless para la gestión de contenido.
+              </li>
+              <li>
+                Realización de
+                <span>seguimiento y mantenimiento</span> constante para velar
+                por su correcto funcionamiento y alto rendimiento.
               </li>
             </ul>
           </div>
         </section>
+
         <aside>
-          <h2>Habilidades</h2>
-          <ul>
-            <li>React, Next.js, Node.js, Express</li>
-            <li>MongoDB, PostgreSQL</li>
-            <li>TypeScript, JavaScript, HTML, CSS</li>
-            <li>Azure, Docker, Git, CI/CD</li>
-          </ul>
+          <h2>Habilidades Técnicas</h2>
+
+          <div class="skills-group">
+            <strong>Análisis y Metodología</strong>
+            <ul>
+              <li>Análisis de Procesos de Negocio</li>
+              <li>Arquitectura de Integración de Datos</li>
+              <li>Metodologías Ágiles (Scrum)</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <strong>Backend & DB Design</strong>
+            <ul>
+              <li>Node.js (Express, NestJS)</li>
+              <li>PHP (Laravel)</li>
+              <li>PostgreSQL, MongoDB, MySQL</li>
+              <li>ORM (Prisma)</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <strong>DevOps & Control de Versión</strong>
+            <ul>
+              <li>Docker, Azure Cloud Services</li>
+              <li>CI/CD Pipelines (GitHub Actions)</li>
+              <li>Git Avanzado</li>
+            </ul>
+          </div>
+
+          <div class="skills-group">
+            <strong>Frontend & UI/UX</strong>
+            <ul>
+              <li>React, Next.js, Vue, Nuxt</li>
+              <li>TypeScript, JavaScript (ES6+)</li>
+              <li>HTML5, CSS3, Tailwind CSS</li>
+            </ul>
+          </div>
 
           <h2>Educación</h2>
           <ul>
@@ -316,12 +425,6 @@
           <ul>
             <li>Español (Nativo)</li>
             <li>Inglés (C1 – Avanzado)</li>
-          </ul>
-
-          <h2>Intereses</h2>
-          <ul>
-            <li>Software de código abierto</li>
-            <li>Linux</li>
           </ul>
 
           <h2>Referencias</h2>
