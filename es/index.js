@@ -11,8 +11,8 @@ const path = require('path')
 
   await page.pdf({
     path: 'manuel-morales-resume-es.pdf',
-    width: '800px',
-    height: '900px',
+    width: '2000px',
+    height: '2000px',
     printBackground: true,
     pageRanges: '1',
   })

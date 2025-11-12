@@ -4,154 +4,208 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Manuel Morales – Full Stack Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        font-family: 'Segoe UI', sans-serif;
+      * {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        background: #f9f9f9;
-        color: #333;
+      }
+
+      html,
+      body {
+        /* width: 1200px;
+        height: 1350px; */
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background: #ffffff;
+        color: #2d3748;
+        line-height: 1.6;
+        overflow: hidden;
+      }
+
+      body {
         display: flex;
+        background: linear-gradient(to right, #f8fafc 250px, #ffffff 250px);
       }
 
       aside {
-        background: #3b4a5a;
-        color: white;
-        width: 250px;
-        padding: 2rem 1rem;
-        box-sizing: border-box;
+        background: #1a202c;
+        color: #e2e8f0;
+        width: 30%;
+        padding: 2.5rem 1.8rem;
+        box-shadow: 8px 0 25px rgba(0, 0, 0, 0.1);
       }
 
       aside h2 {
-        font-size: 1.2rem;
-        margin-top: 1.5rem;
-        border-bottom: 1px solid #555;
-        padding-bottom: 0.3rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #63b3ed;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid #2d3748;
+        letter-spacing: 0.5px;
       }
 
       aside ul {
         list-style: none;
-        padding-left: 0;
-        margin: 0.5rem 0;
+        font-size: 0.92rem;
       }
 
       aside li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.65rem;
+        padding-left: 0.2rem;
+      }
+
+      aside a {
+        color: #90cdf4;
+        text-decoration: none;
+      }
+
+      aside a:hover {
+        text-decoration: underline;
       }
 
       main {
         flex: 1;
-        padding: 0;
+        background: white;
       }
 
       header {
-        background: #2c3e50;
+        background: linear-gradient(135deg, #2c3e50 0%, #1a202c 100%);
         color: white;
-        padding: 1.5rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
+        padding: 2.2rem 2.5rem;
+        border-bottom: 5px solid #63b3ed;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       }
+
       header .interior {
         display: flex;
         justify-content: space-between;
-        width: 100%;
-      }
-
-      header h2 {
-        color: #cdd3d4;
-      }
-
-      header .contact {
-        font-size: 0.9rem;
-        line-height: 1.4;
-        font-weight: bold;
-      }
-
-      header a {
-        color: #6495ed;
+        align-items: flex-start;
+        margin-bottom: 1.2rem;
       }
 
       header h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
         margin: 0;
-        font-size: 2rem;
+        letter-spacing: -0.5px;
+      }
+
+      header h2 {
+        font-size: 1.35rem;
+        color: #a0aec0;
+        font-weight: 500;
+        margin-top: 0.3rem;
+      }
+
+      .contact {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        text-align: right;
+        font-weight: 500;
+      }
+
+      .contact a {
+        color: #7fbfff;
+      }
+
+      header > h2 {
+        font-size: 1.15rem;
+        color: #bee3f8;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+
+      header p {
+        font-size: 0.98rem;
+        max-width: 680px;
+        opacity: 0.95;
+        line-height: 1.7;
+      }
+
+      .section {
+        display: flex;
+        width: 100%;
       }
 
       section {
-        max-width: 900px;
-        margin: auto;
-        padding: 2rem;
+        padding: 2.2rem 2.8rem;
+        width: 70%;
       }
 
-      h2 {
-        color: #587491;
-        margin-top: 2rem;
-        font-size: 1.4rem;
+      section h2 {
+        font-size: 1.38rem;
+        color: #2d3748;
+        margin: 2.2rem 0 1.2rem;
+        font-weight: 600;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 0.4rem;
       }
 
-      ul {
-        padding-left: 1.2rem;
+      .job,
+      .project {
+        margin-bottom: 1.6rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #e2e8f0;
       }
 
-      .project,
-      .job {
-        margin-bottom: 1rem;
+      .job:last-child,
+      .project:last-child {
+        border-bottom: none;
+      }
+
+      .job strong,
+      .project strong {
+        font-size: 1.1rem;
+        color: #2c3e50;
+        font-weight: 600;
       }
 
       .meta {
+        display: block;
+        font-size: 0.88rem;
+        color: #718096;
         font-style: italic;
-        color: #555;
+        margin: 0.3rem 0 0.8rem;
       }
 
-      footer {
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 2rem;
-        color: #777;
+      section ul {
+        margin: 0.8rem 0;
+        padding-left: 1.3rem;
       }
 
-      a {
-        color: #ddd;
-        text-decoration: none;
+      section li {
+        margin-bottom: 0.45rem;
+        font-size: 0.95rem;
+        color: #4a5568;
       }
 
-      a:hover {
-        text-decoration: underline;
-      }
-      .section {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-      }
-      html,
-      body {
-        width: 1200px;
-        height: 1350px;
-        margin: 0;
-        padding: 0;
-      }
-      main {
-        padding: 0;
-        margin: 0;
+      section p {
+        font-size: 0.95rem;
+        color: #4a5568;
+        margin: 0.7rem 0;
       }
 
-      section {
-        padding: 0;
-        margin: 0;
-        width: 750px;
-        margin-left: 1rem;
-      }
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        overflow: hidden;
-      }
       @page {
-        size: 1200px 1350px;
+        size: 1500px 2000px;
         margin: 0;
+      }
+
+      /* Print optimizations */
+      @media print {
+        body {
+          background: white;
+        }
+        aside {
+          -webkit-print-color-adjust: exact;
+        }
+        header {
+          -webkit-print-color-adjust: exact;
+        }
       }
     </style>
   </head>
@@ -285,21 +339,26 @@
             </ul>
           </div>
         </section>
+
         <aside>
           <h2>Skills</h2>
           <ul>
-            <li>React, Next.js, Node.js, Express</li>
+            <li>React, Next.js, Node.js, Express, NestJS</li>
             <li>MongoDB, PostgreSQL</li>
+            <li>SQL, MySQL, PostgreSQL</li>
             <li>TypeScript, JavaScript, HTML, CSS</li>
-            <li>Azure, Docker, Git, CI/CD</li>
+            <li>Azure, Docker, Git, CI/CD, Kubernetes</li>
+            <li>PHP, Laravel, WordPress</li>
+            <li>Nuxt, Vue</li>
+            <li>Python</li>
+            <li>Tailwind, Bootstrap</li>
+            <li>Linux, Bash scripting, Shell scripting</li>
           </ul>
 
           <h2>Education</h2>
           <ul>
             <li>Universidad Politécnica Territorial de Valencia</li>
-            <li>
-              Técnico Superior Universitario – Industrial Materials (2013–2019)
-            </li>
+            <li>Bachelor's Degree – Industrial Materials (2013–2019)</li>
           </ul>
 
           <h2>Languages</h2>
@@ -312,16 +371,19 @@
           <ul>
             <li>Open-source software</li>
             <li>Linux</li>
+            <li>Shell Scripting</li>
           </ul>
 
           <h2>References</h2>
           <ul>
-            <li>Javier Albornoz – DevNavigate</li>
+            <li>Javier Albornoz – DevNavigate®</li>
             <li>+58 412 9936067</li>
             <li>Kervis Vasquez – Hity®</li>
             <li>+55 11 92044 7620</li>
             <li>Carlos Peña – CreateAi®</li>
             <li>+58 424 4094820</li>
+            <li>David Rincon – Qanta®</li>
+            <li>+52 55 6422 3608</li>
           </ul>
         </aside>
       </div>
