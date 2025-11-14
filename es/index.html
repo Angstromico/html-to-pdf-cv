@@ -25,6 +25,9 @@
         background: linear-gradient(to right, #f8fafc 250px, #ffffff 250px);
       }
 
+      /**************************/
+      /*        ASIDE           */
+      /**************************/
       aside {
         background: #1a202c;
         color: #e2e8f0;
@@ -62,6 +65,9 @@
         text-decoration: underline;
       }
 
+      /**************************/
+      /*          MAIN          */
+      /**************************/
       main {
         flex: 1;
         background: white;
@@ -121,6 +127,9 @@
         line-height: 1.7;
       }
 
+      /**************************/
+      /*        SECTION         */
+      /**************************/
       .section {
         display: flex;
         width: 100%;
@@ -184,25 +193,26 @@
         margin: 0.7rem 0;
       }
 
+      /**************************/
+      /*        PRINT           */
+      /**************************/
       @page {
-        size: 1500px 2750px;
+        size: 1500px 2500px;
         margin: 0;
       }
 
-      /* Print optimizations */
       @media print {
         body {
           background: white;
         }
-        aside {
-          -webkit-print-color-adjust: exact;
-        }
+        aside,
         header {
           -webkit-print-color-adjust: exact;
         }
       }
     </style>
   </head>
+
   <body>
     <main>
       <header>
@@ -216,22 +226,19 @@
               <a
                 href="https://manuel-morales-brit-portfolio.netlify.app"
                 target="_blank"
-                >Portafolio:
+              >
+                Portafolio:
                 <strong
                   >https://manuel-morales-brit-portfolio.netlify.app</strong
-                ></a
-              >
+                >
+              </a>
             </div>
-            <div>
-              email:
-              <strong href="mailto:manuesteban1990@gmail.com"
-                >manuesteban1990@gmail.com</strong
-              >
-            </div>
+            <div>email: <strong>manuesteban1990@gmail.com</strong></div>
             <div>+58 414 4021058</div>
             <div>Valencia - Carabobo</div>
           </div>
         </div>
+
         <h2>Perfil</h2>
         <p>
           Desarrollador web Full Stack creativo y proactivo con más de cuatro
@@ -245,6 +252,7 @@
       <div class="section">
         <section>
           <h2>Experiencia Laboral</h2>
+
           <div class="job">
             <strong>DevNavigate</strong>
             <span class="meta">España (Remoto) · Sep 2024 – Presente</span>
@@ -258,6 +266,7 @@
               </li>
             </ul>
           </div>
+
           <div class="job">
             <strong>Establishment Labs</strong>
             <span class="meta">Costa Rica (Remoto) · Ene 2022 – Sep 2024</span>
@@ -272,6 +281,7 @@
               <li>React.js, Vue, Nuxt, Node.js, Laravel, MySQL</li>
             </ul>
           </div>
+
           <div class="job">
             <strong>Qanta Media</strong>
             <span class="meta">Costa Rica (Remoto) · Jun 2021 – Sep 2024</span>
@@ -284,24 +294,11 @@
               <li>Soporte técnico especializado para Establishment Labs</li>
             </ul>
           </div>
-          <div class="job">
-            <strong>ISMCENTER®</strong>
-            <span class="meta">Colombia (Remoto) · Jun 2021 – Ene 2022</span>
-            <ul>
-              <li>
-                Desarrollo de temas y plugins personalizados para WordPress
-              </li>
-              <li>
-                HTML, CSS, JavaScript, TypeScript, React, Next.js, Laravel,
-                NestJS, Prisma, PostgreSQL, Heroku
-              </li>
-            </ul>
-          </div>
 
           <h2>Proyectos</h2>
+
           <div class="project">
-            <strong>Mia Femtech™</strong>
-            <br />
+            <strong>Mia Femtech™</strong><br />
             <strong>link: https://miafemtech.com</strong>
             <span class="meta">Oct 2023 – Feb 2024</span>
             <p>
@@ -316,9 +313,9 @@
               </li>
             </ul>
           </div>
+
           <div class="project">
-            <strong>Motiva®</strong>
-            <br />
+            <strong>Motiva®</strong><br />
             <strong>link: https://motiva.health/motivaImagine/welcome</strong>
             <span class="meta">Ene 2022 – Oct 2023</span>
             <p>
@@ -330,34 +327,43 @@
               <li>Uso de WordPress headless para la gestión de contenido</li>
             </ul>
           </div>
+
           <div class="project">
-            <strong>Sig Velzia Web®</strong>
-            <br />
+            <strong>Sig Velzia Web®</strong><br />
             <strong>link: https://sig.velzia.es</strong>
             <span class="meta">Sep 2024 – Nov 2025</span>
             <p>
-              Plataforma de administración para la administración de productos
-              comercializados por Velzia®.
+              Plataforma de administración para los productos comercializados
+              por Velzia®.
             </p>
             <ul>
               <li>Desarrollo de la plataforma de administración de Velzia®</li>
               <li>
                 Mejoras y refactorización de secciones, formularios y lógica de
-                negocio tanto en el Back End como en el Front End
+                negocio tanto en Back End como Front End
               </li>
               <li>
-                Optimización en la eficiencia de llamadas a endpoints del API de
-                Sig Velzia.
+                Optimización en la eficiencia de llamadas al API de Sig Velzia
               </li>
             </ul>
           </div>
         </section>
+
         <aside>
+          <h2>Habilidades clave</h2>
+
+          <p>
+            Flexibilidad, resolución de problemas, aprendizaje continuo,
+            atención al detalle,<br />
+
+            Trabajo en equipo, comunicación, adaptabilidad, metodologías ágiles,
+            Scrum
+          </p>
           <h2>Habilidades</h2>
           <ul>
             <li>React, Next.js, Node.js, Express, NestJS</li>
             <li>MongoDB, PostgreSQL</li>
-            <li>SQL, MySQL, PostgreSQL</li>
+            <li>SQL, MySQL</li>
             <li>TypeScript, JavaScript, HTML, CSS</li>
             <li>Azure, Docker, Git, CI/CD, Kubernetes</li>
             <li>PHP, Laravel, WordPress</li>
