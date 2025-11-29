@@ -40,6 +40,20 @@ To generate the **Spanish version** of your CV:
 node ./es/index.js
 ```
 
+### Harvard Style (XYZ Method)
+
+To generate the **English Harvard version**:
+
+```bash
+npm run build:harvard
+```
+
+To generate the **Spanish Harvard version**:
+
+```bash
+npm run build:harvard:es
+```
+
 After running either command, a PDF file will be created in the project directory.
 
 ---

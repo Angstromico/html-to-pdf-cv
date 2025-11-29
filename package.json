@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:harvard": "node generate-harvard-pdf.js",
+    "build:harvard:es": "node generate-harvard-pdf.js es"
   },
   "keywords": [],
   "author": "",
