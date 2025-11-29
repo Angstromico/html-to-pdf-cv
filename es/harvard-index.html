@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manuel Morales – Desarrollador Full Stack</title>
+    <style>
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 1.2;
+        color: #000;
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 24pt;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .contact-info {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 11pt;
+      }
+      .contact-info a {
+        color: #000;
+        text-decoration: none;
+      }
+      h2 {
+        text-transform: uppercase;
+        font-size: 12pt;
+        border-bottom: 1px solid #000;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .section-content {
+        font-size: 11pt;
+      }
+      .job-header,
+      .project-header,
+      .education-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+      .job-subheader,
+      .project-subheader {
+        display: flex;
+        justify-content: space-between;
+        font-style: italic;
+        margin-bottom: 5px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        margin-bottom: 10px;
+      }
+      li {
+        margin-bottom: 2px;
+      }
+      strong {
+        font-weight: bold;
+      }
+      .skills-list {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Manuel Morales</h1>
+      <div class="contact-info">
+        Valencia, Carabobo | +58 414 4021058 |
+        <a href="mailto:manuesteban1990@gmail.com">manuesteban1990@gmail.com</a>
+        |
+        <a
+          href="https://manuel-morales-brit-portfolio.netlify.app"
+          target="_blank"
+          >Portafolio</a
+        >
+      </div>
+    </header>
+
+    <section>
+      <h2>Experiencia Profesional</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <span>DevNavigate</span>
+          <span>Remoto</span>
+        </div>
+        <div class="job-subheader">
+          <span>Desarrollador Full Stack</span>
+          <span>Sep 2024 – Presente</span>
+        </div>
+        <ul>
+          <li>
+            Optimicé los tiempos de respuesta de la API en un
+            <strong>35%</strong> refactorizando controladores y consultas de
+            MongoDB, mejorando la eficiencia del sistema.
+          </li>
+          <li>
+            Reduje el tiempo de despliegue en un <strong>40%</strong> mejorando
+            los pipelines de CI/CD con GitHub Actions, acelerando el ciclo de
+            lanzamiento.
+          </li>
+          <li>
+            Desarrollé más de <strong>5</strong> herramientas internas y para
+            clientes utilizando el stack MERN, agilizando las operaciones
+            comerciales.
+          </li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span>Establishment Labs</span>
+          <span>Remoto</span>
+        </div>
+        <div class="job-subheader">
+          <span>Desarrollador Front End</span>
+          <span>Ene 2022 – Sep 2024</span>
+        </div>
+        <ul>
+          <li>
+            Aumenté la velocidad del sitio web y el rendimiento SEO en un
+            <strong>25%</strong> mediante técnicas avanzadas de optimización.
+          </li>
+          <li>
+            Diseñé e implementé la interfaz de usuario para Mia Femtech™ usando
+            Vue, Nuxt y TypeScript, resultando en un aumento del
+            <strong>15%</strong> en la participación de los usuarios.
+          </li>
+          <li>
+            Mejoré la productividad del equipo interno en un
+            <strong>30%</strong> integrando APIs, formularios y contenido
+            gestionado por CMS.
+          </li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span>Qanta Media</span>
+          <span>Remoto</span>
+        </div>
+        <div class="job-subheader">
+          <span>Desarrollador Full Stack</span>
+          <span>Jun 2021 – Sep 2024</span>
+        </div>
+        <ul>
+          <li>
+            Reduje los esfuerzos de mantenimiento en un
+            <strong>50%</strong> creando componentes y plantillas reutilizables
+            en React y Next.js.
+          </li>
+          <li>
+            Entregué soluciones escalables para más de
+            <strong>10</strong> clientes colaborando con equipos
+            multifuncionales.
+          </li>
+          <li>
+            Desarrollé aplicaciones web robustas utilizando React, Next.js,
+            Strapi y PostgreSQL, manejando más de
+            <strong>10,000</strong> usuarios mensuales.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Proyectos</h2>
+
+      <div class="project">
+        <div class="project-header">
+          <span>Mia Femtech™</span>
+          <span
+            ><a href="https://miafemtech.com" target="_blank"
+              >miafemtech.com</a
+            ></span
+          >
+        </div>
+        <div class="project-subheader">
+          <span>Establishment Labs</span>
+          <span>Oct 2023 – Feb 2024</span>
+        </div>
+        <ul>
+          <li>
+            Construí el front-end desde cero con Vue 3 y Nuxt, logrando una
+            puntuación Lighthouse de <strong>95+</strong>.
+          </li>
+          <li>
+            Implementé formularios complejos, un blog, un buscador de clínicas y
+            testimonios, sirviendo a <strong>miles</strong> de visitantes
+            diarios.
+          </li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span>Motiva®</span>
+          <span
+            ><a
+              href="https://motiva.health/motivaImagine/welcome"
+              target="_blank"
+              >motiva.health</a
+            ></span
+          >
+        </div>
+        <div class="project-subheader">
+          <span>Establishment Labs</span>
+          <span>Ene 2022 – Oct 2023</span>
+        </div>
+        <ul>
+          <li>
+            Mantuve y mejoré el front-end en Vue 3, apoyando a una base de
+            usuarios global en más de <strong>50</strong> países.
+          </li>
+          <li>
+            Gestioné el contenido utilizando WordPress headless, agilizando las
+            actualizaciones para más de <strong>100</strong> páginas.
+          </li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <span>Sig Velzia Web®</span>
+          <span
+            ><a href="https://sig.velzia.es" target="_blank"
+              >sig.velzia.es</a
+            ></span
+          >
+        </div>
+        <div class="project-subheader">
+          <span>Velzia</span>
+          <span>Sep 2024 – Nov 2025</span>
+        </div>
+        <ul>
+          <li>
+            Desarrollé una plataforma de garantía integral para Velzia®,
+            gestionando <strong>cientos</strong> de registros de productos.
+          </li>
+          <li>
+            Mejoré la lógica de negocio tanto en el Back End como en el Front
+            End, reduciendo la tasa de errores en un <strong>20%</strong>.
+          </li>
+          <li>
+            Mejoré la eficiencia de los endpoints de la API, reduciendo el
+            tiempo de recuperación de datos en un <strong>30%</strong>.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Educación</h2>
+      <div class="education">
+        <div class="education-header">
+          <span>Universidad Politécnica Territorial de Valencia</span>
+          <span>Valencia, Venezuela</span>
+        </div>
+        <div class="job-subheader">
+          <span>Licenciatura en Materiales Industriales</span>
+          <span>2013 – 2019</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Habilidades Técnicas</h2>
+      <div class="skills-list">
+        <strong>Lenguajes y Frameworks:</strong> JavaScript, TypeScript, Python,
+        PHP, HTML, CSS, React, Next.js, Vue, Nuxt, Node.js, Express, NestJS,
+        Laravel.<br />
+        <strong>Bases de Datos:</strong> MongoDB, PostgreSQL, MySQL, SQL.<br />
+        <strong>Herramientas y Plataformas:</strong> Git, Docker, Kubernetes,
+        Azure, AWS, Linux, Bash Scripting, CI/CD.<br />
+        <strong>Habilidades Blandas:</strong> Resolución de problemas,
+        Agile/Scrum, Liderazgo de equipos, Comunicación, Adaptabilidad.
+      </div>
+    </section>
+
+    <section>
+      <h2>Idiomas</h2>
+      <div class="skills-list">
+        <strong>Español:</strong> Nativo<br />
+        <strong>Inglés:</strong> Avanzado (C1)
+      </div>
+    </section>
+  </body>
+</html>
