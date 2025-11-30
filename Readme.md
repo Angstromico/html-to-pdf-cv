@@ -66,6 +66,34 @@ After running either command, a PDF file will be created in the project director
 
 ---
 
+````
+
+### Social Media Banners
+
+To generate the **English banner**:
+
+```bash
+npm run generate:banner:en
+````
+
+To generate the **Spanish banner**:
+
+```bash
+npm run generate:banner:es
+```
+
+![English Banner](banner-en.png)
+
+---
+
+## 🧰 Tech Stack
+
+- **Node.js**
+- **Puppeteer** (for PDF & Image generation)
+- **HTML/CSS** (for styling CVs and Banners)
+
+---
+
 ## 📈 Future Improvements
 
 - Add customizable templates

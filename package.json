@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:harvard": "node generate-harvard-pdf.js",
-    "build:harvard:es": "node generate-harvard-pdf.js es"
+    "build:harvard:es": "node generate-harvard-pdf.js es",
+    "generate:banner:en": "node generate-banners.js en",
+    "generate:banner:es": "node generate-banners.js es"
   },
   "keywords": [],
   "author": "",
