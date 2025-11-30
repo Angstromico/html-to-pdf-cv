@@ -74,7 +74,7 @@ To generate the **English banner**:
 
 ```bash
 npm run generate:banner:en
-````
+```
 
 To generate the **Spanish banner**:
 
@@ -105,6 +105,7 @@ npm run generate:banner:es
 
 ## 👨‍💻 Author
 
-**Manuel Morales**  
-Full Stack Developer — MERN | Azure | PostgreSQL | Laravel | WordPress  
+**Manuel Morales**
+Full Stack Developer — MERN | Azure | PostgreSQL | Laravel | WordPress
 [LinkedIn](https://www.linkedin.com/in/manuel-esteban-morales-zuarez-68573b189/)
+````
