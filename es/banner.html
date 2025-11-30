@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Banner Freelancer - Manuel Morales</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        background: #0f172a;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .banner {
+        width: 1200px;
+        height: 628px;
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: white;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      }
+      .bg-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          rgba(100, 150, 255, 0.15) 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+        opacity: 0.4;
+      }
+      .content {
+        padding: 80px 90px;
+        position: relative;
+        z-index: 2;
+      }
+      .tag {
+        display: inline-block;
+        background: #3b82f6;
+        padding: 10px 24px;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 58px;
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 16px 0;
+        background: linear-gradient(90deg, #60a5fa, #a78bfa, #ec4899);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .subtitle {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        opacity: 0.95;
+      }
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        font-size: 20px;
+        font-weight: 500;
+        max-width: 920px;
+      }
+      .skill-cat strong {
+        color: #60a5fa;
+      }
+
+      /* Botones de contacto mejorados */
+      .contact-buttons {
+        position: absolute;
+        bottom: 40px;
+        right: 90px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 3;
+      }
+      .contact-btn {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        padding: 16px 28px;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+      .contact-btn i {
+        font-size: 26px;
+        width: 32px;
+        text-align: center;
+      }
+      .contact-btn:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        border-color: #60a5fa;
+      }
+      .contact-btn span {
+        font-weight: 700;
+        color: #a0e7ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="bg-grid"></div>
+      <div class="content">
+        <div class="tag">DISPONIBLE PARA PROYECTOS</div>
+        <h1>Manuel Morales<br />Full Stack & Integraciones</h1>
+        <div class="subtitle">
+          Arquitecto de soluciones escalables • +4 años de experiencia
+        </div>
+
+        <div class="skills">
+          <div class="skill-cat">
+            <strong>Lenguajes & Frameworks</strong><br />
+            React • Next.js • Vue • Nuxt • Node.js • NestJS • Laravel
+          </div>
+          <div class="skill-cat">
+            <strong>Bases de Datos</strong><br />
+            PostgreSQL • MongoDB • MySQL
+          </div>
+          <div class="skill-cat">
+            <strong>DevOps & Cloud</strong><br />
+            Docker • Kubernetes • Azure • AWS • CI/CD • Linux
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones de contacto hermosos -->
+      <div class="contact-buttons">
+        <a href="tel:+584144021058" class="contact-btn">
+          <i class="fas fa-phone"></i>
+          <span>+58 414 4021058</span>
+        </a>
+        <a href="mailto:manuesteban1990@gmail.com" class="contact-btn">
+          <i class="fas fa-envelope"></i>
+          <span>manuesteban1990@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
