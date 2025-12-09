@@ -214,6 +214,22 @@
           -webkit-print-color-adjust: exact;
         }
       }
+      .justify {
+        text-align: justify;
+      }
+      .perfil-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem; /* espacio entre texto e imagen */
+      }
+
+      .profile-img {
+        width: 180px; /* ajusta el tamaño según prefieras */
+        height: auto;
+        border-radius: 50%; /* estilo circular */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
     </style>
   </head>
 
@@ -244,13 +260,20 @@
         </div>
 
         <h2>Perfil</h2>
-        <p>
-          Desarrollador web Full Stack creativo y proactivo con más de cuatro
-          años de experiencia brindando soluciones digitales escalables para
-          empresas en Venezuela, Costa Rica y España. Especializado en
-          desarrollo Full Stack, diseño mobile-first, arquitectura optimizada
-          para SEO y contribuciones de código abierto.
-        </p>
+        <div class="perfil-container">
+          <p class="justify">
+            Desarrollador web Full Stack creativo y proactivo con más de cuatro
+            años de experiencia brindando soluciones digitales escalables para
+            empresas en Venezuela, Costa Rica y España. Especializado en
+            desarrollo Full Stack, diseño mobile-first, arquitectura optimizada
+            para SEO y contribuciones de código abierto.
+          </p>
+          <img
+            src="assets/profile.png"
+            alt="Foto de perfil"
+            class="profile-img"
+          />
+        </div>
       </header>
 
       <div class="section">
