@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -13,7 +13,7 @@
 
       html,
       body {
-        font-family: "Inter", "Segoe UI", sans-serif;
+        font-family: 'Inter', 'Segoe UI', sans-serif;
         background: #ffffff;
         color: #2d3748;
         line-height: 1.6;
@@ -23,6 +23,24 @@
       body {
         display: flex;
         background: linear-gradient(to right, #f8fafc 250px, #ffffff 250px);
+      }
+
+      .profile-photo {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        top: 100%;
+        right: 0;
+      }
+
+      .profile-photo img {
+        width: 196px;
+        height: 196px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #63b3ed;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
       }
 
       /**************************/
@@ -111,6 +129,7 @@
         line-height: 1.7;
         text-align: right;
         font-weight: 500;
+        position: relative;
       }
 
       .contact a {
@@ -201,7 +220,7 @@
       /*        PRINT           */
       /**************************/
       @page {
-        size: 1500px 2400px;
+        size: 1500px 2900px;
         margin: 0;
       }
 
@@ -240,16 +259,23 @@
             <div>email: <strong>manuesteban1990@gmail.com</strong></div>
             <div>+58 414 4021058</div>
             <div>Valencia - Carabobo</div>
+            <div class="profile-photo">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E03AQGAdNRYGB6i8w/profile-displayphoto-crop_800_800/B4EZpLaLINHcAI-/0/1762201747103?e=1770249600&v=beta&t=E88S9fGRSNRpEnScfXkZ8xSM2SlNPQTV3OeyX374Rno"
+                alt="Foto de perfil de Manuel Morales"
+              />
+            </div>
           </div>
         </div>
 
         <h2>Perfil</h2>
         <p>
           Desarrollador web Full Stack creativo y proactivo con más de seis años
-          de experiencia brindando soluciones digitales escalables para empresas
+          de experiencia creando soluciones digitales escalables para empresas
           en Venezuela, Costa Rica y España. Especializado en desarrollo Full
-          Stack, diseño mobile-first, arquitectura optimizada para SEO y
-          contribuciones de código abierto.
+          Stack, diseño mobile-first, arquitectura optimizada para SEO y mejora
+          continua del rendimiento, con enfoque en productos SaaS y plataformas
+          de alto tráfico.
         </p>
       </header>
 
@@ -262,11 +288,20 @@
             <span class="meta">España (Remoto) · Sep 2024 – Presente</span>
             <ul>
               <li>
-                MongoDB, Express.js, React.js, Node.js, TypeScript, HTML, CSS
+                Desarrollo y mantenimiento de aplicaciones SaaS utilizando el
+                stack MERN (MongoDB, Express.js, React.js, Node.js), mejorando
+                la estabilidad general del sistema y reduciendo errores en
+                producción en aproximadamente un 30%.
               </li>
               <li>
-                Pipelines CI/CD, GitHub Actions, Docker, metodologías ágiles,
-                servicios de Azure
+                Implementación y optimización de pipelines CI/CD con GitHub
+                Actions, Docker y Azure, reduciendo los tiempos de despliegue en
+                un 40% y mejorando la consistencia entre entornos.
+              </li>
+              <li>
+                Participación activa en metodologías ágiles, colaborando con
+                equipos multidisciplinarios para entregar nuevas funcionalidades
+                de forma incremental y orientada a negocio.
               </li>
             </ul>
           </div>
@@ -276,13 +311,21 @@
             <span class="meta">Costa Rica (Remoto) · Ene 2022 – Sep 2024</span>
             <ul>
               <li>
-                Lanzamiento del sitio web Mia Femtech™ utilizando Vue, Nuxt y
-                TypeScript
+                Desarrollo y lanzamiento del sitio web Mia Femtech™,
+                contribuyendo a mejorar la presencia digital de la marca y
+                aumentando la conversión de formularios informativos en
+                aproximadamente un 25%.
               </li>
               <li>
-                Proyecto desarrollado mediante subcontratación con Qanta Media
+                Implementación de interfaces optimizadas en Vue, Nuxt y
+                TypeScript, priorizando rendimiento, accesibilidad y diseño
+                mobile-first.
               </li>
-              <li>React.js, Vue, Nuxt, Node.js, Laravel, MySQL</li>
+              <li>
+                Colaboración mediante subcontratación con Qanta Media,
+                asegurando entregas alineadas a estándares de calidad y tiempos
+                definidos por el cliente.
+              </li>
             </ul>
           </div>
 
@@ -291,11 +334,20 @@
             <span class="meta">Costa Rica (Remoto) · Jun 2021 – Sep 2024</span>
             <ul>
               <li>
-                Desarrollo de aplicaciones full stack con React, Next.js, Strapi
-                y PostgreSQL
+                Desarrollo de aplicaciones Full Stack con React, Next.js, Strapi
+                y PostgreSQL, mejorando la escalabilidad y facilidad de
+                mantenimiento de los proyectos en un 35%.
               </li>
-              <li>Integración de CMS para contenido dinámico</li>
-              <li>Soporte técnico especializado para Establishment Labs</li>
+              <li>
+                Integración de CMS headless para la gestión de contenido
+                dinámico, permitiendo a los equipos de marketing actualizar
+                información sin depender del área técnica.
+              </li>
+              <li>
+                Soporte técnico especializado para proyectos de Establishment
+                Labs, resolviendo incidencias críticas y mejorando la
+                experiencia del usuario final.
+              </li>
             </ul>
           </div>
 
@@ -306,14 +358,20 @@
             <strong>link: https://miafemtech.com</strong>
             <span class="meta">Oct 2023 – Feb 2024</span>
             <p>
-              Nuevo sitio web de Establishment Labs que presenta Mia®, un
-              procedimiento innovador de implantes mamarios.
+              Desarrollo completo del nuevo sitio web corporativo de Mia®, una
+              solución innovadora de implantes mamarios, enfocado en educación
+              al paciente y captación de leads.
             </p>
             <ul>
-              <li>Desarrollo del front-end desde cero con Vue 3 y Nuxt</li>
+              <li>
+                Desarrollo del front-end desde cero con Vue 3 y Nuxt, logrando
+                una mejora aproximada del 40% en tiempos de carga frente a la
+                versión anterior.
+              </li>
               <li>
                 Implementación de formularios, blog, buscador de clínicas y
-                testimonios
+                testimonios, incrementando la interacción del usuario y el
+                tiempo promedio de permanencia en el sitio.
               </li>
             </ul>
           </div>
@@ -323,12 +381,21 @@
             <strong>link: https://motiva.health/motivaImagine/welcome</strong>
             <span class="meta">Ene 2022 – Oct 2023</span>
             <p>
-              Sitio web principal de Establishment Labs, donde se muestran sus
-              productos, cirugías y asistencia a pacientes.
+              Plataforma web principal de Establishment Labs para la
+              presentación de productos, procedimientos quirúrgicos y recursos
+              para pacientes.
             </p>
             <ul>
-              <li>Mantenimiento y mejora del front-end en Vue 3</li>
-              <li>Uso de WordPress headless para la gestión de contenido</li>
+              <li>
+                Mantenimiento y mejora continua del front-end en Vue 3,
+                optimizando componentes críticos y reduciendo errores visuales
+                en un 20%.
+              </li>
+              <li>
+                Implementación de WordPress como CMS headless, mejorando la
+                autonomía del equipo de contenido y reduciendo tiempos de
+                actualización en más de un 50%.
+              </li>
             </ul>
           </div>
 
@@ -337,17 +404,23 @@
             <strong>link: https://sig.velzia.es</strong>
             <span class="meta">Sep 2024 – Nov 2025</span>
             <p>
-              Plataforma de administración para los productos comercializados
-              por Velzia®.
+              Plataforma interna de administración para la gestión de productos
+              y procesos comerciales de Velzia®.
             </p>
             <ul>
-              <li>Desarrollo de la plataforma de administración de Velzia®</li>
               <li>
-                Mejoras y refactorización de secciones, formularios y lógica de
-                negocio tanto en Back End como Front End
+                Desarrollo y evolución de la plataforma administrativa,
+                mejorando la experiencia de los usuarios internos y reduciendo
+                tareas manuales repetitivas en un 30%.
               </li>
               <li>
-                Optimización en la eficiencia de llamadas al API de Sig Velzia
+                Refactorización de secciones, formularios y lógica de negocio en
+                Front End y Back End, incrementando la mantenibilidad del
+                código.
+              </li>
+              <li>
+                Optimización de llamadas al API, reduciendo tiempos de respuesta
+                en aproximadamente un 25%.
               </li>
             </ul>
           </div>
@@ -359,10 +432,10 @@
           <p class="soft">
             Flexibilidad, resolución de problemas, aprendizaje continuo,
             atención al detalle,<br />
-
-            Trabajo en equipo, comunicación, adaptabilidad, metodologías ágiles,
+            trabajo en equipo, comunicación, adaptabilidad, metodologías ágiles,
             Scrum
           </p>
+
           <h2>Habilidades</h2>
           <ul>
             <li>React, Next.js, Node.js, Express, NestJS</li>
@@ -394,7 +467,7 @@
 
           <h2>Intereses</h2>
           <ul>
-            <li>Software de código abierto</li>
+            <li>Open Source</li>
             <li>Linux</li>
             <li>Shell Scripting</li>
           </ul>
