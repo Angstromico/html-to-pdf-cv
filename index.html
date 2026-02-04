@@ -29,6 +29,27 @@
         background: linear-gradient(to right, #f8fafc 250px, #ffffff 250px);
       }
 
+      .profile-photo {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        top: 100%;
+        right: 0;
+      }
+
+      .profile-photo img {
+        width: 196px;
+        height: 196px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #63b3ed;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      /**************************/
+      /*        ASIDE           */
+      /**************************/
       aside {
         background: #1a202c;
         color: #e2e8f0;
@@ -70,6 +91,9 @@
         text-decoration: underline;
       }
 
+      /**************************/
+      /*          MAIN          */
+      /**************************/
       main {
         flex: 1;
         background: white;
@@ -109,6 +133,7 @@
         line-height: 1.7;
         text-align: right;
         font-weight: 500;
+        position: relative;
       }
 
       .contact a {
@@ -129,6 +154,9 @@
         line-height: 1.7;
       }
 
+      /**************************/
+      /*        SECTION         */
+      /**************************/
       .section {
         display: flex;
         width: 100%;
@@ -234,6 +262,12 @@
             </div>
             <div>+58 414 4021058</div>
             <div>Valencia - Carabobo</div>
+            <div class="profile-photo">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4E03AQGAdNRYGB6i8w/profile-displayphoto-crop_800_800/B4EZpLaLINHcAI-/0/1762201747103?e=1770249600&v=beta&t=E88S9fGRSNRpEnScfXkZ8xSM2SlNPQTV3OeyX374Rno"
+                alt="Foto de perfil de Manuel Morales"
+              />
+            </div>
           </div>
         </div>
         <h2>Profile</h2>
