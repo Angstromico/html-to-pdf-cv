@@ -1,90 +1,30 @@
-const http = require('http')
-const fs = require('fs')
+const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path')
+const puppeteer = require('puppeteer')
 const { exec } = require('child_process')
 
+const app = express()
 const PORT = 4000
 
-const MIMETYPES = {
-  '.html': 'text/html',
-  '.js': 'text/javascript',
-  '.css': 'text/css',
-  '.json': 'application/json',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.pdf': 'application/pdf',
-}
+// Middleware
+app.use(bodyParser.json({ limit: '10mb' }))
+app.use(express.static(__dirname, { index: false }))
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
 
-const server = http.createServer((req, res) => {
-  // Enable CORS for development convenience (though strictly not needed for same-origin)
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
-
-  if (req.method === 'OPTIONS') {
-    res.writeHead(204)
-    res.end()
-    return
-  }
-
-  // Serve Dashboard
-  if (req.url === '/' && req.method === 'GET') {
-    serveFile(res, 'dashboard.html', 'text/html')
-    return
-  }
-
-  // API: Generate CV
-  if (req.url === '/api/generate' && req.method === 'POST') {
-    let body = ''
-    req.on('data', (chunk) => {
-      body += chunk.toString()
-    })
-    req.on('end', () => {
-      try {
-        const { type, lang } = JSON.parse(body)
-        handleGeneration(res, type, lang)
-      } catch (error) {
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify({ success: false, error: 'Invalid JSON' }))
-      }
-    })
-    return
-  }
-
-  // Serve Static Files (PDFs, images, etc.)
-  // Basic security: Prevent directory traversal
-  const safePath = path.normalize(req.url).replace(/^(\.\.[\/\\])+/, '')
-  const filePath = path.join(__dirname, safePath)
-
-  // Check if file exists and is within the directory
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-    const ext = path.extname(filePath).toLowerCase()
-    const contentType = MIMETYPES[ext] || 'application/octet-stream'
-    serveFile(res, safePath, contentType)
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' })
-    res.end('Not Found')
-  }
+// Serve Dashboard
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dashboard.html'))
 })
 
-function serveFile(res, fileName, contentType) {
-  const filePath = path.join(__dirname, fileName)
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      res.writeHead(500, { 'Content-Type': 'text/plain' })
-      res.end(`Server Error: ${err.code}`)
-    } else {
-      res.writeHead(200, { 'Content-Type': contentType })
-      res.end(content)
-    }
-  })
-}
+// Legacy Generation API (Executes existing scripts)
+app.post('/api/generate', (req, res) => {
+  const { type, lang } = req.body
 
-function handleGeneration(res, type, lang) {
   let command = ''
   let outputFile = ''
 
-  // Logic mapping based on existing scripts
   if (type === 'standard') {
     if (lang === 'en') {
       command = 'node generate-pdf.js'
@@ -104,9 +44,9 @@ function handleGeneration(res, type, lang) {
   }
 
   if (!command) {
-    res.writeHead(400, { 'Content-Type': 'application/json' })
-    res.end(JSON.stringify({ success: false, error: 'Invalid configuration' }))
-    return
+    return res
+      .status(400)
+      .json({ success: false, error: 'Invalid configuration' })
   }
 
   console.log(`Executing: ${command}`)
@@ -114,29 +54,69 @@ function handleGeneration(res, type, lang) {
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error: ${error.message}`)
-      res.writeHead(500, { 'Content-Type': 'application/json' })
-      res.end(
-        JSON.stringify({
-          success: false,
-          error: error.message,
-          details: stderr,
-        }),
-      )
-      return
+      return res
+        .status(500)
+        .json({ success: false, error: error.message, details: stderr })
+    }
+    res.json({
+      success: true,
+      message: 'CV Generated Successfully',
+      file: outputFile,
+    })
+  })
+})
+
+// Custom CV Generation API
+app.post('/api/generate-custom', async (req, res) => {
+  try {
+    const data = req.body // Contains all CV data + type + lang
+    const templateName = data.type === 'standard' ? 'standard' : 'harvard'
+    const outputFile = `custom-${data.type}-${data.lang}.pdf`
+
+    // Render EJS to HTML string
+    const html = await new Promise((resolve, reject) => {
+      app.render(templateName, data, (err, html) => {
+        if (err) reject(err)
+        else resolve(html)
+      })
+    })
+
+    // Use Puppeteer to generate PDF
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.setContent(html, { waitUntil: 'networkidle0' })
+
+    const pdfOptions = {
+      path: outputFile,
+      printBackground: true,
+      format: 'Letter',
     }
 
-    console.log(`Success: ${stdout}`)
-    res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.end(
-      JSON.stringify({
-        success: true,
-        message: 'CV Generated Successfully',
-        file: outputFile,
-      }),
-    )
-  })
-}
+    if (data.type === 'standard') {
+      pdfOptions.width = '1500px'
+      pdfOptions.height = '2500px'
+      delete pdfOptions.format // Use dimensions for standard style to match legacy
+      pdfOptions.pageRanges = '1'
+    } else {
+      pdfOptions.margin = {
+        top: '0.5in',
+        right: '0.5in',
+        bottom: '0.5in',
+        left: '0.5in',
+      }
+    }
 
-server.listen(PORT, () => {
+    await page.pdf(pdfOptions)
+    await browser.close()
+
+    console.log(`Generated Custom PDF: ${outputFile}`)
+    res.json({ success: true, file: outputFile })
+  } catch (error) {
+    console.error('Custom Generation Error:', error)
+    res.status(500).json({ success: false, error: error.message })
+  }
+})
+
+app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`)
 })

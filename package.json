@@ -14,6 +14,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "body-parser": "^2.2.2",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
     "puppeteer": "^24.28.0"
   }
 }

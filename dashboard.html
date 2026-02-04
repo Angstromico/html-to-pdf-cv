@@ -53,10 +53,27 @@
           transform: rotate(360deg);
         }
       }
+      input,
+      textarea,
+      select {
+        background-color: #334155;
+        border: 1px solid #475569;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        width: 100%;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #3b82f6;
+        ring: 2px solid #3b82f6;
+      }
     </style>
   </head>
-  <body class="min-h-screen flex items-center justify-center p-6">
-    <div class="max-w-4xl w-full">
+  <body class="min-h-screen p-6">
+    <div class="max-w-6xl mx-auto">
       <!-- Header -->
       <header class="mb-10 text-center">
         <h1
@@ -65,7 +82,7 @@
           CV Generator
         </h1>
         <p class="text-slate-400">
-          Generate your professional resumes with a single click.
+          Professional Resume Builder & PDF Generator
         </p>
       </header>
 
@@ -75,12 +92,28 @@
         class="hidden mb-6 p-4 rounded-lg text-center transition-all duration-300"
       ></div>
 
-      <!-- Cards Grid -->
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Standard CV Card -->
-        <div
-          class="glass-card rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300"
+      <!-- Tabs -->
+      <div class="flex justify-center mb-8 space-x-4">
+        <button
+          onclick="switchTab('quick')"
+          id="tab-quick"
+          class="btn px-6 py-2 rounded-full font-medium bg-blue-600 text-white"
         >
+          Quick Generate
+        </button>
+        <button
+          onclick="switchTab('custom')"
+          id="tab-custom"
+          class="btn px-6 py-2 rounded-full font-medium bg-slate-700 text-slate-300 hover:bg-slate-600"
+        >
+          Custom Builder
+        </button>
+      </div>
+
+      <!-- QUICK GENERATE VIEW -->
+      <div id="view-quick" class="grid md:grid-cols-2 gap-8">
+        <!-- Standard CV Card (Same as before) -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-semibold text-white">Standard CV</h2>
             <span
@@ -89,61 +122,54 @@
             >
           </div>
           <p class="text-slate-400 mb-6 text-sm">
-            The classic resume layout suited for most industry applications.
-            Clean and concise.
+            The classic resume layout from your static files.
           </p>
-
           <div class="space-y-3">
-            <!-- Standard EN -->
             <div
               class="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700"
             >
               <div class="flex items-center">
-                <span class="text-2xl mr-3">🇺🇸</span>
-                <span class="text-sm font-medium">English Version</span>
+                <span class="text-2xl mr-3">🇺🇸</span
+                ><span class="text-sm font-medium">English</span>
               </div>
               <button
                 onclick="generateCV('standard', 'en', this)"
-                class="btn bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
+                class="btn bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
               >
-                <span>Box Build</span>
+                Generate
               </button>
             </div>
-            <!-- Standard ES -->
             <div
               class="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700"
             >
               <div class="flex items-center">
-                <span class="text-2xl mr-3">🇪🇸</span>
-                <span class="text-sm font-medium">Spanish Version</span>
+                <span class="text-2xl mr-3">🇪🇸</span
+                ><span class="text-sm font-medium">Spanish</span>
               </div>
               <button
                 onclick="generateCV('standard', 'es', this)"
-                class="btn bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
+                class="btn bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
               >
-                <span>Box Build</span>
+                Generate
               </button>
             </div>
           </div>
-
-          <!-- Latest Output -->
           <div
             id="preview-standard"
             class="mt-4 hidden p-3 bg-green-900/20 border border-green-800 rounded-lg"
           >
-            <p class="text-xs text-green-400 mb-2">✨ Generation Successful</p>
             <a
               href="#"
               target="_blank"
               class="text-sm text-green-300 hover:text-white underline"
-              >View PDF</a
+              >View Standard PDF</a
             >
           </div>
         </div>
 
-        <!-- Harvard CV Card -->
+        <!-- Harvard CV Card (Same as before) -->
         <div
-          class="glass-card rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow duration-300 border-l-4 border-l-purple-500"
+          class="glass-card rounded-2xl p-6 shadow-xl border-l-4 border-l-purple-500"
         >
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-semibold text-white">Harvard CV</h2>
@@ -153,95 +179,544 @@
             >
           </div>
           <p class="text-slate-400 mb-6 text-sm">
-            The prestigious XYZ method format, optimized for academic and elite
-            corporate roles.
+            The prestigious XYZ method format from your static files.
           </p>
-
           <div class="space-y-3">
-            <!-- Harvard EN -->
             <div
               class="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700"
             >
               <div class="flex items-center">
-                <span class="text-2xl mr-3">🇺🇸</span>
-                <span class="text-sm font-medium">English Version</span>
+                <span class="text-2xl mr-3">🇺🇸</span
+                ><span class="text-sm font-medium">English</span>
               </div>
               <button
                 onclick="generateCV('harvard', 'en', this)"
-                class="btn bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
+                class="btn bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
               >
-                <span>Box Build</span>
+                Generate
               </button>
             </div>
-            <!-- Harvard ES -->
             <div
               class="flex items-center justify-between bg-slate-800/50 p-3 rounded-lg border border-slate-700"
             >
               <div class="flex items-center">
-                <span class="text-2xl mr-3">🇪🇸</span>
-                <span class="text-sm font-medium">Spanish Version</span>
+                <span class="text-2xl mr-3">🇪🇸</span
+                ><span class="text-sm font-medium">Spanish</span>
               </div>
               <button
                 onclick="generateCV('harvard', 'es', this)"
-                class="btn bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2"
+                class="btn bg-purple-600 hover:bg-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium"
               >
-                <span>Box Build</span>
+                Generate
               </button>
             </div>
           </div>
-
-          <!-- Latest Output -->
           <div
             id="preview-harvard"
             class="mt-4 hidden p-3 bg-green-900/20 border border-green-800 rounded-lg"
           >
-            <p class="text-xs text-green-400 mb-2">✨ Generation Successful</p>
             <a
               href="#"
               target="_blank"
               class="text-sm text-green-300 hover:text-white underline"
-              >View PDF</a
+              >View Harvard PDF</a
             >
           </div>
+        </div>
+      </div>
+
+      <!-- CUSTOM BUILDER VIEW -->
+      <div id="view-custom" class="hidden glass-card rounded-2xl p-8">
+        <h2 class="text-2xl font-bold mb-6 border-b border-slate-700 pb-2">
+          Custom Resume Builder
+        </h2>
+
+        <form id="customForm" onsubmit="handleCustomSubmit(event)">
+          <!-- config -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="block text-sm mb-1">Type</label>
+              <select name="type" class="w-full">
+                <option value="standard">Standard (Modern)</option>
+                <option value="harvard">Harvard (Academic)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Language</label>
+              <select
+                name="lang"
+                class="w-full"
+                onchange="updateLabels(this.value)"
+              >
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Personal Info -->
+          <div class="mb-6 grid grid-cols-2 gap-4">
+            <div class="col-span-2 md:col-span-1">
+              <label class="block text-sm mb-1">Full Name</label>
+              <input type="text" name="name" value="Manuel Morales" required />
+            </div>
+            <div class="col-span-2 md:col-span-1">
+              <label class="block text-sm mb-1">Job Title</label>
+              <input
+                type="text"
+                name="title"
+                value="Full Stack Developer"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Email</label>
+              <input
+                type="email"
+                name="email"
+                value="manuesteban1990@gmail.com"
+              />
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Phone</label>
+              <input type="text" name="phone" value="+58 414 4021058" />
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Location</label>
+              <input type="text" name="location" value="Valencia, Venezuela" />
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Portfolio URL</label>
+              <input
+                type="text"
+                name="portfolio"
+                value="https://manuel-morales-brit-portfolio.netlify.app"
+              />
+            </div>
+            <div class="col-span-2">
+              <label class="block text-sm mb-1">Profile Photo query</label>
+              <input
+                type="file"
+                id="photoInput"
+                accept="image/*"
+                class="text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
+              />
+              <input type="hidden" name="photo" id="photoBase64" />
+            </div>
+          </div>
+
+          <!-- Summary -->
+          <div class="mb-6">
+            <label class="block text-sm mb-1">Professional Summary</label>
+            <textarea name="summary" rows="3">
+Creative and proactive Full Stack web developer...</textarea
+            >
+          </div>
+
+          <!-- Experience -->
+          <div class="mb-6 p-4 border border-slate-700 rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-bold">Work Experience</h3>
+              <button
+                type="button"
+                onclick="addItem('experience')"
+                class="text-sm text-blue-400"
+              >
+                + Add Job
+              </button>
+            </div>
+            <div id="container-experience" class="space-y-4">
+              <!-- Items injected by JS -->
+            </div>
+          </div>
+
+          <!-- Projects -->
+          <div class="mb-6 p-4 border border-slate-700 rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-bold">Projects</h3>
+              <button
+                type="button"
+                onclick="addItem('projects')"
+                class="text-sm text-blue-400"
+              >
+                + Add Project
+              </button>
+            </div>
+            <div id="container-projects" class="space-y-4">
+              <!-- Items injected by JS -->
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="mb-6 p-4 border border-slate-700 rounded-lg">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-bold">Education</h3>
+              <button
+                type="button"
+                onclick="addItem('education')"
+                class="text-sm text-blue-400"
+              >
+                + Add Education
+              </button>
+            </div>
+            <div id="container-education" class="space-y-4"></div>
+          </div>
+
+          <!-- Skills -->
+          <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm mb-1 font-bold"
+                >Core Skills (Soft)</label
+              >
+              <textarea
+                name="coreSkills"
+                rows="3"
+                placeholder="Comma separated..."
+              >
+Flexibility, Problem-solving, Teamwork</textarea
+              >
+            </div>
+            <div>
+              <label class="block text-sm mb-1 font-bold"
+                >Tech Skills (List)</label
+              >
+              <textarea
+                name="skillList"
+                rows="3"
+                placeholder="React, Node.js, SQL..."
+              ></textarea>
+              <p class="text-xs text-slate-400 mt-1">For Standard CV (List)</p>
+            </div>
+          </div>
+
+          <!-- Harvard Specific Skills -->
+          <div
+            class="mb-6 p-4 bg-slate-800/50 rounded-lg border border-slate-700"
+          >
+            <h3 class="font-bold mb-3 text-purple-300">
+              Harvard Format Skills
+            </h3>
+            <div class="grid grid-cols-1 gap-3">
+              <input
+                type="text"
+                name="skills_languages"
+                placeholder="Languages & Frameworks"
+              />
+              <input
+                type="text"
+                name="skills_databases"
+                placeholder="Databases"
+              />
+              <input
+                type="text"
+                name="skills_tools"
+                placeholder="Tools & Platforms"
+              />
+            </div>
+          </div>
+
+          <div class="flex justify-end pt-6 border-t border-slate-700">
+            <button
+              type="submit"
+              id="btn-custom-gen"
+              class="btn bg-green-600 hover:bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg flex items-center"
+            >
+              <span>Generate Custom PDF</span>
+            </button>
+          </div>
+        </form>
+
+        <div
+          id="preview-custom"
+          class="mt-8 hidden p-6 bg-green-900/20 border border-green-800 rounded-lg text-center"
+        >
+          <h3 class="text-xl text-green-400 mb-2">🎉 Custom CV Ready!</h3>
+          <a
+            href="#"
+            target="_blank"
+            class="inline-block bg-green-700 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+            >Download PDF</a
+          >
         </div>
       </div>
     </div>
 
     <!-- Javascript -->
     <script>
-      async function generateCV(type, lang, btn) {
-        // UI State: Loading
+      // --- State Handling ---
+
+      let experienceData = [
+        {
+          company: 'DevNavigate',
+          location: 'Remote',
+          title: 'Full Stack Developer',
+          period: 'Sep 2024 – Present',
+          achievements:
+            'Optimized API response times.\nImproved CI/CD pipelines.',
+        },
+      ]
+
+      let projectsData = [
+        {
+          name: 'Mia Femtech',
+          link: 'https://miafemtech.com',
+          company: 'Establishment Labs',
+          period: 'Oct 2023',
+          description: 'Brand new website.',
+          details: 'Built front-end with Vue 3.\nImplemented forms.',
+        },
+      ]
+
+      let educationData = [
+        {
+          institution: 'University of Valencia',
+          degree: "Bachelor's",
+          year: '2019',
+          location: 'Venezuela',
+        },
+      ]
+
+      // --- Tabs ---
+      function switchTab(tab) {
+        document.getElementById('view-quick').classList.add('hidden')
+        document.getElementById('view-custom').classList.add('hidden')
+        document.getElementById('tab-quick').className =
+          'btn px-6 py-2 rounded-full font-medium bg-slate-700 text-slate-300 hover:bg-slate-600'
+        document.getElementById('tab-custom').className =
+          'btn px-6 py-2 rounded-full font-medium bg-slate-700 text-slate-300 hover:bg-slate-600'
+
+        document.getElementById(`view-${tab}`).classList.remove('hidden')
+        document.getElementById(`tab-${tab}`).className =
+          'btn px-6 py-2 rounded-full font-medium bg-blue-600 text-white'
+      }
+
+      // --- Form Builders ---
+      function renderItems() {
+        // Experience
+        const expContainer = document.getElementById('container-experience')
+        expContainer.innerHTML = ''
+        experienceData.forEach((item, index) => {
+          expContainer.innerHTML += `
+                    <div class="bg-slate-800 p-3 rounded border border-slate-600">
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                             <input type="text" placeholder="Company" value="${item.company}" onchange="updateItem('experience', ${index}, 'company', this.value)">
+                             <input type="text" placeholder="Location" value="${item.location}" onchange="updateItem('experience', ${index}, 'location', this.value)">
+                             <input type="text" placeholder="Title" value="${item.title}" onchange="updateItem('experience', ${index}, 'title', this.value)">
+                             <input type="text" placeholder="Period" value="${item.period}" onchange="updateItem('experience', ${index}, 'period', this.value)">
+                        </div>
+                        <textarea rows="2" placeholder="Bullets (one per line)" onchange="updateItem('experience', ${index}, 'achievements', this.value)">${item.achievements}</textarea>
+                        <button type="button" onclick="removeItem('experience', ${index})" class="text-red-400 text-xs mt-1">Remove</button>
+                    </div>
+                 `
+        })
+
+        // Projects
+        const projContainer = document.getElementById('container-projects')
+        projContainer.innerHTML = ''
+        projectsData.forEach((item, index) => {
+          projContainer.innerHTML += `
+                    <div class="bg-slate-800 p-3 rounded border border-slate-600">
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                             <input type="text" placeholder="Name" value="${item.name}" onchange="updateItem('projects', ${index}, 'name', this.value)">
+                             <input type="text" placeholder="Link" value="${item.link}" onchange="updateItem('projects', ${index}, 'link', this.value)">
+                             <input type="text" placeholder="Company/Context" value="${item.company}" onchange="updateItem('projects', ${index}, 'company', this.value)">
+                             <input type="text" placeholder="Period" value="${item.period}" onchange="updateItem('projects', ${index}, 'period', this.value)">
+                        </div>
+                        <textarea rows="2" placeholder="Description" class="mb-2" onchange="updateItem('projects', ${index}, 'description', this.value)">${item.description}</textarea>
+                        <textarea rows="2" placeholder="Details (Bullets per line)" onchange="updateItem('projects', ${index}, 'details', this.value)">${item.details}</textarea>
+                        <button type="button" onclick="removeItem('projects', ${index})" class="text-red-400 text-xs mt-1">Remove</button>
+                    </div>
+                 `
+        })
+
+        // Education
+        const eduContainer = document.getElementById('container-education')
+        eduContainer.innerHTML = ''
+        educationData.forEach((item, index) => {
+          eduContainer.innerHTML += `
+                    <div class="bg-slate-800 p-3 rounded border border-slate-600">
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                             <input type="text" placeholder="Institution" value="${item.institution}" onchange="updateItem('education', ${index}, 'institution', this.value)">
+                             <input type="text" placeholder="Degree" value="${item.degree}" onchange="updateItem('education', ${index}, 'degree', this.value)">
+                             <input type="text" placeholder="Year" value="${item.year}" onchange="updateItem('education', ${index}, 'year', this.value)">
+                             <input type="text" placeholder="Location" value="${item.location}" onchange="updateItem('education', ${index}, 'location', this.value)">
+                        </div>
+                        <button type="button" onclick="removeItem('education', ${index})" class="text-red-400 text-xs mt-1">Remove</button>
+                    </div>
+                 `
+        })
+      }
+
+      function updateItem(type, index, field, value) {
+        if (type === 'experience') experienceData[index][field] = value
+        if (type === 'projects') projectsData[index][field] = value
+        if (type === 'education') educationData[index][field] = value
+      }
+
+      function addItem(type) {
+        if (type === 'experience')
+          experienceData.push({ company: '', achievements: '' })
+        if (type === 'projects') projectsData.push({ name: '', details: '' })
+        if (type === 'education') educationData.push({ institution: '' })
+        renderItems()
+      }
+
+      function removeItem(type, index) {
+        if (type === 'experience') experienceData.splice(index, 1)
+        if (type === 'projects') projectsData.splice(index, 1)
+        if (type === 'education') educationData.splice(index, 1)
+        renderItems()
+      }
+
+      // --- Photo Handling ---
+      document
+        .getElementById('photoInput')
+        .addEventListener('change', function (e) {
+          const file = e.target.files[0]
+          if (file) {
+            const reader = new FileReader()
+            reader.onloadend = function () {
+              document.getElementById('photoBase64').value = reader.result
+            }
+            reader.readAsDataURL(file)
+          }
+        })
+
+      // --- Form Submission ---
+      async function handleCustomSubmit(e) {
+        e.preventDefault()
+        const btn = document.getElementById('btn-custom-gen')
         const originalText = btn.innerHTML
         btn.innerHTML = `<div class="spinner"></div> Generating...`
         btn.disabled = true
-        btn.classList.add('opacity-75', 'cursor-not-allowed')
+
+        const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData.entries())
+
+        // Process lists
+        data.experience = experienceData.map((item) => ({
+          ...item,
+          achievements: item.achievements.split('\n').filter(Boolean),
+        }))
+        data.projects = projectsData.map((item) => ({
+          ...item,
+          details: item.details.split('\n').filter(Boolean),
+        }))
+        data.education = educationData
+
+        // Arrays from simple inputs
+        data.skills = data.skillList.split(',').map((s) => s.trim())
+
+        // Labels based on lang
+        const labels =
+          data.lang === 'es'
+            ? {
+                experience: 'Experiencia Laboral',
+                projects: 'Proyectos',
+                education: 'Educación',
+                skills: 'Habilidades',
+                coreSkills: 'Habilidades Blandas',
+                languages: 'Idiomas',
+                interests: 'Intereses',
+                references: 'Referencias',
+                profile: 'Perfil',
+              }
+            : {
+                experience: 'Work Experience',
+                projects: 'Projects',
+                education: 'Education',
+                skills: 'Skills',
+                coreSkills: 'Core Skills',
+                languages: 'Languages',
+                interests: 'Interests',
+                references: 'References',
+                profile: 'Profile',
+              }
+        data.labels = labels
+
+        // Harvard specific skill object
+        if (data.type === 'harvard') {
+          data.skills = {
+            languages: data.skills_languages,
+            databases: data.skills_databases,
+            tools: data.skills_tools,
+          }
+          // Mock data for others to prevent crashes if fields empty
+          data.softSkills = data.coreSkills
+          data.languages = [
+            {
+              name: data.lang == 'es' ? 'Español' : 'Spanish',
+              level: 'Native',
+            },
+          ]
+          data.references = [
+            { name: 'Ref 1', company: 'Company', contact: '123' },
+          ]
+        } else {
+          // Standard CV mocks for missing lists in this simplified form
+          data.languages = [
+            { name: 'Spanish', level: 'Native' },
+            { name: 'English', level: 'Advanced' },
+          ]
+          data.interests = ['Coding', 'Music']
+          data.references = [{ name: 'Ref', company: 'Co', contact: '123' }]
+        }
+
+        try {
+          const response = await fetch('/api/generate-custom', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          })
+          const resData = await response.json()
+
+          if (resData.success) {
+            const preview = document.getElementById('preview-custom')
+            preview.classList.remove('hidden')
+            preview.querySelector('a').href = resData.file
+            preview.querySelector('a').innerText = `Download ${resData.file}`
+            // Scroll to preview
+            preview.scrollIntoView({ behavior: 'smooth' })
+          } else {
+            alert('Error: ' + resData.error)
+          }
+        } catch (err) {
+          console.error(err)
+          alert('Generation failed')
+        } finally {
+          btn.innerHTML = originalText
+          btn.disabled = false
+        }
+      }
+
+      // --- Init ---
+      renderItems()
+
+      // --- Legacy Functions ---
+      async function generateCV(type, lang, btn) {
+        const originalText = btn.innerHTML
+        btn.innerHTML = `<div class="spinner"></div>`
+        btn.disabled = true
 
         try {
           const response = await fetch('/api/generate', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ type, lang }),
           })
 
           const data = await response.json()
 
-          if (!data.success) {
-            throw new Error(data.error || 'Unknown error occurred')
-          }
+          if (!data.success) throw new Error(data.error)
 
-          // Success UI
           showNotification('Successfully Generated!', 'success')
           updatePreview(type, data.file)
         } catch (error) {
           console.error(error)
           showNotification(`Error: ${error.message}`, 'error')
         } finally {
-          // Reset UI
           btn.innerHTML = originalText
           btn.disabled = false
-          btn.classList.remove('opacity-75', 'cursor-not-allowed')
         }
       }
 
@@ -250,7 +725,6 @@
           type === 'standard' ? 'preview-standard' : 'preview-harvard'
         const container = document.getElementById(previewId)
         const link = container.querySelector('a')
-
         link.href = filename
         link.innerText = `Download ${filename}`
         container.classList.remove('hidden')
@@ -259,35 +733,10 @@
       function showNotification(message, type) {
         const el = document.getElementById('notification')
         el.innerText = message
-        el.classList.remove(
-          'hidden',
-          'bg-red-500',
-          'bg-green-500',
-          'text-white',
-        )
-
-        if (type === 'error') {
-          el.classList.add(
-            'bg-red-500/20',
-            'text-red-200',
-            'border',
-            'border-red-500',
-          )
-        } else {
-          el.classList.add(
-            'bg-green-500/20',
-            'text-green-200',
-            'border',
-            'border-green-500',
-          )
-        }
-
+        el.classList.remove('hidden', 'bg-red-500', 'bg-green-500')
+        el.classList.add(type === 'error' ? 'bg-red-500' : 'bg-green-500')
         el.classList.remove('hidden')
-
-        // Auto hide after 3 seconds
-        setTimeout(() => {
-          el.classList.add('hidden')
-        }, 3000)
+        setTimeout(() => el.classList.add('hidden'), 3000)
       }
     </script>
   </body>

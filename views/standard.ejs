@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= name %> – <%= title %></title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background: #ffffff;
+        color: #2d3748;
+        line-height: 1.6;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        background: linear-gradient(to right, #f8fafc 250px, #ffffff 250px);
+      }
+
+      .profile-photo {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        top: 100%;
+        right: 0;
+      }
+
+      .profile-photo img {
+        width: 196px;
+        height: 196px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #63b3ed;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      /**************************/
+      /*        ASIDE           */
+      /**************************/
+      aside {
+        background: #1a202c;
+        color: #e2e8f0;
+        width: 30%;
+        padding: 2.5rem 1.8rem;
+        box-shadow: 8px 0 25px rgba(0, 0, 0, 0.1);
+      }
+
+      aside h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #63b3ed;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid #2d3748;
+        letter-spacing: 0.5px;
+      }
+
+      aside ul {
+        list-style: none;
+        font-size: 1.32rem;
+      }
+
+      aside .soft {
+        font-size: 1.32rem;
+      }
+
+      aside li {
+        margin-bottom: 0.65rem;
+        padding-left: 0.2rem;
+      }
+
+      aside a {
+        color: #90cdf4;
+        text-decoration: none;
+      }
+
+      aside a:hover {
+        text-decoration: underline;
+      }
+
+      /**************************/
+      /*          MAIN          */
+      /**************************/
+      main {
+        flex: 1;
+        background: white;
+      }
+
+      header {
+        background: linear-gradient(135deg, #2c3e50 0%, #1a202c 100%);
+        color: white;
+        padding: 2.2rem 2.5rem;
+        border-bottom: 5px solid #63b3ed;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      header .interior {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.2rem;
+      }
+
+      header h1 {
+        font-size: 2.7rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.5px;
+      }
+
+      header h2 {
+        font-size: 1.65rem;
+        color: #a0aec0;
+        font-weight: 500;
+        margin-top: 0.3rem;
+      }
+
+      .contact {
+        font-size: 1.18rem;
+        line-height: 1.7;
+        text-align: right;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .contact a {
+        color: #7fbfff;
+      }
+
+      header > h2 {
+        font-size: 1.45rem;
+        color: #bee3f8;
+        margin: 1.5rem 0 0.8rem;
+        font-weight: 600;
+      }
+
+      header p {
+        font-size: 1.28rem;
+        max-width: 680px;
+        opacity: 0.95;
+        line-height: 1.7;
+      }
+
+      /**************************/
+      /*        SECTION         */
+      /**************************/
+      .section {
+        display: flex;
+        width: 100%;
+      }
+
+      section {
+        padding: 2.2rem 2.8rem;
+        width: 70%;
+      }
+
+      section h2 {
+        font-size: 1.68rem;
+        color: #2d3748;
+        margin: 2.2rem 0 1.2rem;
+        font-weight: 600;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 0.4rem;
+      }
+
+      .job,
+      .project {
+        margin-bottom: 1.6rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed #e2e8f0;
+      }
+
+      .job:last-child,
+      .project:last-child {
+        border-bottom: none;
+      }
+
+      .job strong,
+      .project strong {
+        font-size: 1.4rem;
+        color: #2c3e50;
+        font-weight: 600;
+      }
+
+      .meta {
+        display: block;
+        font-size: 1.18rem;
+        color: #718096;
+        font-style: italic;
+        margin: 0.3rem 0 0.8rem;
+      }
+
+      section ul {
+        margin: 0.8rem 0;
+        padding-left: 1.3rem;
+      }
+
+      section li {
+        margin-bottom: 0.45rem;
+        font-size: 1.25rem;
+        color: #4a5568;
+      }
+
+      section p {
+        font-size: 1.25rem;
+        color: #4a5568;
+        margin: 0.7rem 0;
+      }
+
+      @page {
+        size: 1500px 2500px;
+        margin: 0;
+      }
+
+      /* Print optimizations */
+      @media print {
+        body {
+          background: white;
+        }
+        aside {
+          -webkit-print-color-adjust: exact;
+        }
+        header {
+          -webkit-print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="interior">
+          <div>
+            <h1><%= name %></h1>
+            <h2><%= title %></h2>
+          </div>
+          <div class="contact">
+            <div>
+              <a href="<%= portfolio %>" target="_blank">Portfolio</a>
+            </div>
+            <div>
+              <a href="mailto:<%= email %>"><%= email %></a>
+            </div>
+            <div><%= phone %></div>
+            <div><%= location %></div>
+            <div class="profile-photo">
+              <% if (photo) { %>
+                <img src="<%= photo %>" alt="Foto de perfil de <%= name %>" />
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <h2><%= labels.profile %></h2>
+        <p><%= summary %></p>
+      </header>
+
+      <div class="section">
+        <section>
+          <h2><%= labels.experience %></h2>
+          
+          <% experience.forEach(job => { %>
+          <div class="job">
+            <strong><%= job.company %></strong>
+            <span class="meta"><%= job.location %> · <%= job.period %></span>
+            <ul>
+              <% job.achievements.forEach(item => { %>
+                <li><%= item %></li>
+              <% }) %>
+            </ul>
+          </div>
+          <% }) %>
+
+          <h2><%= labels.projects %></h2>
+          
+          <% projects.forEach(project => { %>
+          <div class="project">
+            <strong><%= project.name %></strong>
+            <br />
+            <strong>link: <%= project.link %></strong>
+            <span class="meta"><%= project.period %></span>
+            <p><%= project.description %></p>
+            <ul>
+              <% project.details.forEach(detail => { %>
+                <li><%= detail %></li>
+              <% }) %>
+            </ul>
+          </div>
+          <% }) %>
+
+        </section>
+
+        <aside>
+          <h2><%= labels.coreSkills %></h2>
+          <p class="soft">
+            <%= coreSkills %>
+          </p>
+
+          <h2><%= labels.skills %></h2>
+          <ul>
+            <% skills.forEach(skill => { %>
+              <li><%= skill %></li>
+            <% }) %>
+          </ul>
+
+          <h2><%= labels.education %></h2>
+          <ul>
+            <% education.forEach(edu => { %>
+              <li><%= edu.institution %></li>
+              <li><%= edu.degree %> (<%= edu.year %>)</li>
+            <% }) %>
+          </ul>
+
+          <h2><%= labels.languages %></h2>
+          <ul>
+            <% languages.forEach(lang => { %>
+              <li><%= lang.name %> (<%= lang.level %>)</li>
+            <% }) %>
+          </ul>
+
+          <h2><%= labels.interests %></h2>
+          <ul>
+            <% interests.forEach(interest => { %>
+              <li><%= interest %></li>
+            <% }) %>
+          </ul>
+
+          <h2><%= labels.references %></h2>
+          <ul>
+            <% references.forEach(ref => { %>
+              <li><%= ref.name %> – <%= ref.company %></li>
+              <li><%= ref.contact %></li>
+            <% }) %>
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

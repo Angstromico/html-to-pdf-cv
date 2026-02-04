@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="<%= lang %>">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= name %> – <%= title %></title>
+    <style>
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 1.2;
+        color: #000;
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 24pt;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      .contact-info {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 11pt;
+      }
+      .contact-info a {
+        color: #000;
+        text-decoration: none;
+      }
+      h2 {
+        text-transform: uppercase;
+        font-size: 12pt;
+        border-bottom: 1px solid #000;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .section-content {
+        font-size: 11pt;
+      }
+      .job-header,
+      .project-header,
+      .education-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+      .job-subheader,
+      .project-subheader {
+        display: flex;
+        justify-content: space-between;
+        font-style: italic;
+        margin-bottom: 5px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        margin-bottom: 10px;
+      }
+      li {
+        margin-bottom: 2px;
+      }
+      strong {
+        font-weight: bold;
+      }
+      .skills-list {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><%= name %></h1>
+      <div class="contact-info">
+        <%= location %> | <%= phone %> |
+        <a href="mailto:<%= email %>"><%= email %></a>
+        |
+        <a
+          href="<%= portfolio %>"
+          target="_blank"
+          >Portfolio</a
+        >
+      </div>
+      <p>
+        <%= summary %>
+      </p>
+    </header>
+
+    <section>
+      <h2><%= labels.experience %></h2>
+
+      <% experience.forEach(job => { %>
+      <div class="job">
+        <div class="job-header">
+          <span><%= job.company %></span>
+          <span><%= job.location %></span>
+        </div>
+        <div class="job-subheader">
+          <span><%= job.title %></span>
+          <span><%= job.period %></span>
+        </div>
+        <ul>
+          <% job.achievements.forEach(item => { %>
+            <li><%= item %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% }) %>
+    </section>
+
+    <section>
+      <h2><%= labels.projects %></h2>
+
+      <% projects.forEach(project => { %>
+      <div class="project">
+        <div class="project-header">
+          <span><%= project.name %></span>
+          <span><a href="<%= project.link %>" target="_blank"><%= project.linkText || 'Link' %></a></span>
+        </div>
+        <div class="project-subheader">
+          <span><%= project.company || 'Personal Project' %></span>
+          <span><%= project.period %></span>
+        </div>
+        <ul>
+          <% project.details.forEach(detail => { %>
+            <li><%= detail %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <% }) %>
+    </section>
+
+    <section>
+      <h2><%= labels.education %></h2>
+      <% education.forEach(edu => { %>
+      <div class="education">
+        <div class="education-header">
+          <span><%= edu.institution %></span>
+          <span><%= edu.location %></span>
+        </div>
+        <div class="job-subheader">
+          <span><%= edu.degree %></span>
+          <span><%= edu.year %></span>
+        </div>
+      </div>
+      <% }) %>
+    </section>
+
+    <section>
+      <h2><%= labels.skills %></h2>
+      <div class="skills-list">
+        <strong>Languages & Frameworks:</strong> <%= skills.languages %><br />
+        <strong>Databases:</strong> <%= skills.databases %><br />
+        <strong>Tools & Platforms:</strong> <%= skills.tools %><br />
+        <strong>Soft Skills:</strong> <%= softSkills %>
+      </div>
+    </section>
+
+    <section>
+      <h2><%= labels.languages %></h2>
+      <div class="skills-list">
+        <% languages.forEach(lang => { %>
+          <strong><%= lang.name %>:</strong> <%= lang.level %><br />
+        <% }) %>
+      </div>
+    </section>
+    
+    <section>
+      <h2><%= labels.references %></h2>
+      <div class="skills-list">
+        <% references.forEach(ref => { %>
+          <div>
+            <strong><%= ref.name %></strong> – <%= ref.company %> | <%= ref.contact %>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </body>
+</html>
