@@ -40,6 +40,12 @@ To generate the **Spanish version** of your CV:
 node ./es/index.js
 ```
 
+To generate the **Spanish short version** of the CV:
+
+```bash
+node es/index-short.js
+```
+
 ### Harvard Style (XYZ Method)
 
 To generate the **English Harvard version**:

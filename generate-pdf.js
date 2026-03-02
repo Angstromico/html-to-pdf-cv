@@ -11,10 +11,14 @@ const path = require('path')
 
   await page.pdf({
     path: 'manuel-morales-resume.pdf',
-    width: '1500px',
-    height: '2500px',
+    format: 'A4',
     printBackground: true,
-    pageRanges: '1',
+    margin: {
+      top: '20mm',
+      right: '15mm',
+      bottom: '20mm',
+      left: '15mm',
+    },
   })
 
   await browser.close()

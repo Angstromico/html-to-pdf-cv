@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manuel Morales – Desarrollador Full Stack</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background: #ffffff;
+        color: #2d3748;
+        line-height: 1.5;
+      }
+      body {
+        display: flex;
+        background: linear-gradient(to right, #f8fafc 210px, #ffffff 210px);
+      }
+      .profile-photo {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        top: 100%;
+        right: 0;
+      }
+      .profile-photo img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #63b3ed;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+      aside {
+        background: #1a202c;
+        color: #e2e8f0;
+        width: 32%;
+        padding: 1.8rem 1.2rem;
+        box-shadow: 6px 0 15px rgba(0, 0, 0, 0.1);
+      }
+      aside h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #63b3ed;
+        margin: 1.2rem 0 0.5rem;
+        padding-bottom: 0.2rem;
+        border-bottom: 2px solid #2d3748;
+      }
+      aside ul {
+        list-style: none;
+        font-size: 0.95rem;
+      }
+      aside .soft {
+        font-size: 0.95rem;
+      }
+      aside li {
+        margin-bottom: 0.4rem;
+      }
+      aside a {
+        color: #90cdf4;
+        text-decoration: none;
+      }
+      main {
+        flex: 1;
+        background: white;
+      }
+      header {
+        background: linear-gradient(135deg, #2c3e50 0%, #1a202c 100%);
+        color: white;
+        padding: 1.5rem 1.8rem;
+        border-bottom: 4px solid #63b3ed;
+      }
+      header .interior {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.8rem;
+      }
+      header h1 {
+        font-size: 2rem;
+        margin: 0;
+      }
+      header h2 {
+        font-size: 1.3rem;
+        color: #a0aec0;
+        margin-top: 0.2rem;
+      }
+      .contact {
+        font-size: 0.95rem;
+        text-align: right;
+        position: relative;
+      }
+      .contact a {
+        color: #7fbfff;
+      }
+      header p {
+        font-size: 1rem;
+        max-width: 600px;
+        opacity: 0.95;
+      }
+      .section {
+        display: flex;
+        width: 100%;
+      }
+      section {
+        padding: 1.5rem 1.8rem;
+        width: 68%;
+      }
+      section h2 {
+        font-size: 1.3rem;
+        color: #2d3748;
+        margin: 1.2rem 0 0.8rem;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 0.2rem;
+      }
+      .job,
+      .project {
+        margin-bottom: 1rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px dashed #e2e8f0;
+      }
+      .job:last-child,
+      .project:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+      .job strong,
+      .project strong {
+        font-size: 1.1rem;
+        color: #2c3e50;
+      }
+      .meta {
+        display: block;
+        font-size: 0.9rem;
+        color: #718096;
+        font-style: italic;
+        margin: 0.1rem 0 0.4rem;
+      }
+      section ul {
+        margin: 0.4rem 0;
+        padding-left: 1.2rem;
+      }
+      section li,
+      section p {
+        font-size: 1rem;
+        color: #4a5568;
+        margin-bottom: 0.3rem;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      @media print {
+        body {
+          background: white;
+        }
+        aside,
+        header {
+          -webkit-print-color-adjust: exact;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="interior">
+          <div>
+            <h1>Manuel Morales</h1>
+            <h2>Desarrollador Full Stack</h2>
+          </div>
+          <div class="contact">
+            <div>
+              <a href="https://manuel-morales-brit-portfolio.netlify.app"
+                >Portafolio Web:
+                https://manuel-morales-brit-portfolio.netlify.app</a
+              >
+            </div>
+            <div><strong>manuesteban1990@gmail.com</strong></div>
+            <div>+58 414 4021058 | Valencia - Carabobo</div>
+            <div class="profile-photo">
+              <img src="../profile.png" alt="Manuel Morales" />
+            </div>
+          </div>
+        </div>
+        <p>
+          Desarrollador Full Stack con +6 años de exp en soluciones escalables
+          SaaS, diseño mobile-first y arquitectura SEO. Especialista en React,
+          Node.js y pipelines CI/CD.
+        </p>
+      </header>
+
+      <div class="section">
+        <section>
+          <h2>Experiencia</h2>
+          <div class="job">
+            <strong>DevNavigate</strong>
+            <span class="meta">España (Remoto) · Sep 2024 – Presente</span>
+            <ul>
+              <li>
+                Desarrollo SaaS (MERN), reduciendo errores en producción en 30%.
+              </li>
+              <li>
+                Optimización CI/CD con GitHub Actions/Docker, bajando tiempos de
+                despliegue 40%.
+              </li>
+            </ul>
+          </div>
+          <div class="job">
+            <strong>Establishment Labs</strong>
+            <span class="meta">Costa Rica (Remoto) · Ene 2022 – Sep 2024</span>
+            <ul>
+              <li>
+                Lanzamiento Mia Femtech™ en Vue/Nuxt, aumentando leads
+                informativos un 25%.
+              </li>
+            </ul>
+          </div>
+          <div class="job">
+            <strong>Qanta Media</strong>
+            <span class="meta">Costa Rica (Remoto) · Jun 2021 – Sep 2024</span>
+            <ul>
+              <li>
+                Aplicaciones Full Stack (React, Next.js, Strapi, PostgreSQL),
+                mejorando mantenibilidad 35%.
+              </li>
+              <li>Integración de CMS headless para equipos de marketing.</li>
+            </ul>
+          </div>
+
+          <h2>Proyectos</h2>
+          <div class="project">
+            <strong>Mia Femtech™</strong> (miafemtech.com)
+            <span class="meta">Oct 2023 – Feb 2024</span>
+            <ul>
+              <li>
+                Front-end desde cero (Vue 3/Nuxt), tiempo de carga mejorado
+                ~40%.
+              </li>
+            </ul>
+          </div>
+          <div class="project">
+            <strong>Motiva®</strong> (motiva.health)
+            <span class="meta">Ene 2022 – Oct 2023</span>
+            <ul>
+              <li>
+                CMS Headless WordPress, reduciendo tiempos de actualización 50%.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <aside>
+          <h2>Habilidades</h2>
+          <ul>
+            <li>React, Next.js, Node.js, Express</li>
+            <li>MongoDB, PostgreSQL, SQL</li>
+            <li>TypeScript, JS, HTML, CSS</li>
+            <li>Azure, Docker, Git, CI/CD</li>
+            <li>PHP, Laravel, WordPress</li>
+            <li>Nuxt, Vue, Python</li>
+          </ul>
+
+          <h2>Soft Skills</h2>
+          <p class="soft">
+            Resolución de problemas, Scrum, Adaptabilidad, Trabajo en equipo
+          </p>
+
+          <h2>Educación</h2>
+          <ul>
+            <li>
+              T.S.U en Materiales Industriales <br />
+              (UPT Valencia, 2013-2019)
+            </li>
+          </ul>
+
+          <h2>Idiomas</h2>
+          <ul>
+            <li>Español (Nativo)</li>
+            <li>Inglés (C1 – Avanzado)</li>
+          </ul>
+          <h2>Referencias</h2>
+          <ul>
+            <li>Javier Albornoz – DevNavigate®</li>
+            <li>+58 412 9936067</li>
+            <li>Kervis Vásquez – Hity®</li>
+            <li>+55 11 92044 7620</li>
+            <li>Carlos Peña – Creai®</li>
+            <li>+58 424 4094820</li>
+            <li>David Rincon – Qanta®</li>
+            <li>+52 55 6422 3608</li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
