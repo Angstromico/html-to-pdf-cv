@@ -102,6 +102,8 @@ const generateHTML = (data) => {
             <p>${data.company}</p>
             <div class="contact-info">
                 <p>Phone: ${data.recommenderPhone}</p>
+                <p>LinkedIn: ${data.recommenderLink}</p>
+                <p>ID Card: ${data.recommendedIdCard}</p>
             </div>
         </div>
     </div>
@@ -239,6 +241,20 @@ const generateDOCX = async (data) => {
               }),
             ],
           }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: `LinkedIn: ${data.recommenderLink}`,
+              }),
+            ],
+          }),
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: `ID Card: ${data.recommendedIdCard}`,
+              }),
+            ],
+          }),
         ],
       },
     ],
@@ -258,8 +274,10 @@ const generateDOCX = async (data) => {
     recommenderName: await question('Enter recommender name: '),
     recommendedName: await question('Enter person being recommended name: '),
     recommenderPhone: await question('Enter recommender phone number: '),
+    recommenderLink: await question('Enter recommender LinkedIn/website link: '),
     recommenderTitle: await question('Enter recommender job title: '),
     company: await question('Enter company name: '),
+    recommendedIdCard: await question('Enter recommended person ID card number: ')
   }
 
   console.log('\nGenerating documents...')

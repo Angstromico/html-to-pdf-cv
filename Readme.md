@@ -105,9 +105,9 @@ npm run generate:recommendation:es
 ```
 
 Both commands will:
-- Prompt for recommender name, recommended person name, phone number, job titles, and company
+- Prompt for recommender name, recommended person name, phone number, LinkedIn/website link, job titles, company, and ID card
 - Generate both PDF and DOCX formats
-- Create professional letters with signature fields
+- Create professional letters with signature fields and complete contact information
 
 ---
 
