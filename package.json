@@ -7,7 +7,9 @@
     "build:harvard": "node generate-harvard-pdf.js",
     "build:harvard:es": "node generate-harvard-pdf.js es",
     "generate:banner:en": "node generate-banners.js en",
-    "generate:banner:es": "node generate-banners.js es"
+    "generate:banner:es": "node generate-banners.js es",
+    "generate:recommendation:en": "node generate-recommendation.js",
+    "generate:recommendation:es": "node es/generate-recommendation.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   "description": "",
   "dependencies": {
     "body-parser": "^2.2.2",
+    "docx": "^8.5.0",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "puppeteer": "^24.28.0"

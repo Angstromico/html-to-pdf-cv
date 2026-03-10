@@ -90,6 +90,25 @@ npm run generate:banner:es
 
 ![English Banner](banner-en.png)
 
+### Letter of Recommendation Generator
+
+To generate a **Letter of Recommendation in English** (interactive prompts for recommender and recommended person details):
+
+```bash
+npm run generate:recommendation:en
+```
+
+To generate a **Letter of Recommendation in Spanish** (interactive prompts for recommender and recommended person details):
+
+```bash
+npm run generate:recommendation:es
+```
+
+Both commands will:
+- Prompt for recommender name, recommended person name, phone number, job titles, and company
+- Generate both PDF and DOCX formats
+- Create professional letters with signature fields
+
 ---
 
 ## 🧰 Tech Stack
@@ -97,6 +116,7 @@ npm run generate:banner:es
 - **Node.js**
 - **Puppeteer** (for PDF & Image generation)
 - **HTML/CSS** (for styling CVs and Banners)
+- **docx** (for DOCX generation)
 
 ---
 
