@@ -1,6 +1,5 @@
 const puppeteer = require('puppeteer')
 const fs = require('fs')
-const path = require('path')
 const readline = require('readline')
 
 const rl = readline.createInterface({
@@ -280,7 +279,9 @@ const generateDOCX = async (data) => {
     ),
     recommenderTitle: await question('Ingrese el cargo del recomendante: '),
     company: await question('Ingrese el nombre de la empresa: '),
-    recommendedIdCard: await question('Ingrese el número de cédula de la persona recomendada: ')
+    recommendedIdCard: await question(
+      'Ingrese el número de cédula de la persona recomendada: ',
+    ),
   }
 
   console.log('\nGenerando documentos...')
