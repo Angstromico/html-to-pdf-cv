@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Flujo - Fabricación de Tuberías PVC/CPVC</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4 landscape;
+            margin: 10mm;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            padding: 15px;
+            font-size: 11px;
+        }
+        
+        .page-container {
+            max-width: 297mm;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2e86ab;
+        }
+        
+        h1 {
+            color: #1a5276;
+            font-size: 1.6em;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #5d6d7e;
+            font-size: 1em;
+            font-style: italic;
+        }
+        
+        .flow-section-full {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .flow-section-full .mermaid {
+            min-height: 350px;
+            padding: 25px;
+        }
+        
+        .five-m-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .five-m-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 5px solid;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            min-height: 180px;
+        }
+        
+        .five-m-card .m-title {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .five-m-card .m-content {
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #444;
+        }
+        
+        .flow-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #2e86ab;
+        }
+        
+        .section-title {
+            background: linear-gradient(90deg, #1a5276, #2e86ab);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .mermaid {
+            background: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 11px;
+        }
+        
+        .m-title {
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .materiales .m-title { color: #3498db; }
+        .mano .m-title { color: #f39c12; }
+        .maquinaria .m-title { color: #e74c3c; }
+        .metodo .m-title { color: #27ae60; }
+        .ambiente .m-title { color: #9b59b6; }
+        
+        .footer-note {
+            text-align: center;
+            color: #5d6d7e;
+            font-size: 0.75em;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid #d5dbdb;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="header">
+            <h1>DIAGRAMA DE FLUJO DE PROCESO Y ANÁLISIS 5M</h1>
+            <p class="subtitle">Proyecto: Fabricación de tuberías para agua caliente a partir de scrap de PVC y CPVC</p>
+        </div>
+        
+        <div class="flow-section flow-section-full">
+            <div class="section-title">📊 Diagrama de Flujo del Proceso Productivo</div>
+            <div class="mermaid">
+flowchart TB
+    subgraph MAT["� MATERIALES (Material)"]
+        M1["PVC y CPVC<br/>recuperados"]
+    end
+    
+    subgraph MAN["🟨 MANO DE OBRA (Men)"]
+        M2["Estudiantes e<br/>investigadores"]
+    end
+    
+    subgraph MAQ["🟥 MAQUINARIA (Machine)"]
+        M3["Molino, balanza,<br/>extrusora,<br/>enfriamiento"]
+    end
+    
+    subgraph MET["🟩 MÉTODO (Method)"]
+        M4["Parámetros técnicos<br/>de extrusión"]
+    end
+    
+    subgraph MIL["🟪 MEDIO AMBIENTE (Milieu)"]
+        M5["Control de gases<br/>y residuos"]
+    end
+    
+    subgraph PROCESO["⚙️ PROCESO PRODUCTIVO"]
+        P1["Preparación<br/>de materiales"] --> P2["Extrusión y<br/>conformado"]
+        P2 --> P3["Control de<br/>calidad"]
+    end
+    
+    M1 --> P1
+    M2 --> P1
+    M3 --> P2
+    M4 --> P2
+    M5 --> PROCESO
+    
+    P3 --> PT(["✅ Producto<br/>Terminado"])
+    
+    style MAT fill:#e8f6f3,stroke:#3498db,stroke-width:2px
+    style MAN fill:#fef9e7,stroke:#f39c12,stroke-width:2px
+    style MAQ fill:#fadbd8,stroke:#e74c3c,stroke-width:2px
+    style MET fill:#d5f5e3,stroke:#27ae60,stroke-width:2px
+    style MIL fill:#ebdef0,stroke:#9b59b6,stroke-width:2px
+    style PROCESO fill:#f8f9fa,stroke:#566573,stroke-width:2px
+    style PT fill:#d5f5e3,stroke:#27ae60,stroke-width:3px
+            </div>
+        </div>
+        
+        
+        <div class="section-title">📋 ANÁLISIS 5M - Factores Clave del Proceso</div>
+        <div class="five-m-grid">
+            <div class="five-m-card mano">
+                <div class="m-title">🟨 1. Mano de Obra (Men)</div>
+                <div class="m-content">Estudiantes e investigadores encargados de la formulación y operadores de planta para el manejo de la extrusora.</div>
+            </div>
+            
+            <div class="five-m-card maquinaria">
+                <div class="m-title">🟥 2. Maquinaria (Machine)</div>
+                <div class="m-content">Línea de producción compuesta por molino, balanza de precisión, extrusora monohusillo y sistema de enfriamiento.</div>
+            </div>
+            
+            <div class="five-m-card materiales">
+                <div class="m-title">🟦 3. Materiales (Material)</div>
+                <div class="m-content">Desechos plásticos de PVC (policloruro de vinilo) y CPVC (policloruro de vinilo clorado) recuperados.</div>
+            </div>
+            
+            <div class="five-m-card metodo">
+                <div class="m-title">🟩 4. Método (Method)</div>
+                <div class="m-content">Parámetros técnicos de extrusión, control de temperaturas y cálculos de mezcla para resistencia al agua caliente.</div>
+            </div>
+            
+            <div class="five-m-card ambiente">
+                <div class="m-title">🟪 5. Medio Ambiente (Milieu)</div>
+                <div class="m-content">Condiciones de seguridad en la planta, control de gases de extrusión y gestión de residuos de molienda.</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#e8f6f3',
+                primaryTextColor: '#1a5276',
+                primaryBorderColor: '#2e86ab',
+                lineColor: '#566573',
+                secondaryColor: '#fef9e7',
+                tertiaryColor: '#ebf5fb',
+                fontFamily: 'Segoe UI, sans-serif',
+                fontSize: '14px'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis',
+                padding: 15,
+                nodeSpacing: 50,
+                rankSpacing: 60
+            }
+        });
+    </script>
+</body>
+</html>
