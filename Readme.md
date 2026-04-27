@@ -111,6 +111,21 @@ Both commands will:
 
 ---
 
+### PVC Pipes Flow Diagram Generator
+
+To generate the **PVC Pipes Flow Diagram** (PDF and DOCX formats):
+
+```bash
+npm run build:diagram
+```
+
+This command will:
+- Read `DiagramaTuberiasPVC.html` which contains a Mermaid.js flowchart and a 5M Analysis grid.
+- Render the diagram and generate a single-page landscape PDF.
+- Extract the text and diagram image to generate an editable DOCX file preserving the original content layout.
+
+---
+
 ## 🧰 Tech Stack
 
 - **Node.js**
