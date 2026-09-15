@@ -28,51 +28,55 @@ npm install
 
 ## 💡 Usage
 
-To generate the **English version** of your CV:
+### Unified Build & Validation (Recommended)
+
+To build **all CV versions** simultaneously in ~10 seconds:
 
 ```bash
-node generate-pdf.js
+npm run build:all
 ```
 
-To generate the **Spanish version** of your CV:
+To compile all CVs and **validate page budgets** (strict 1-page for short format, 2-page for Harvard):
 
 ```bash
-node ./es/index.js
+npm run validate
+# or
+npm test
 ```
 
-To generate the **Spanish short version** of the CV:
+### Individual CV Generation
 
-```bash
-node es/index-short.js
-```
-
-### Harvard Style (XYZ Method)
-
-To generate the **English Harvard version**:
-
-```bash
-npm run build:harvard
-```
-
-To generate the **Spanish Harvard version**:
-
-```bash
-npm run build:harvard:es
-```
-
-After running either command, a PDF file will be created in the project directory.
+- **English Standard CV**:
+  ```bash
+  npm run build:cv:en
+  ```
+- **Spanish Standard CV** (Long canvas):
+  ```bash
+  npm run build:cv:es
+  ```
+- **Spanish Short CV** (A4 single-page):
+  ```bash
+  npm run build:cv:es:short
+  ```
+- **English Harvard ATS CV**:
+  ```bash
+  npm run build:harvard
+  ```
+- **Spanish Harvard ATS CV**:
+  ```bash
+  npm run build:harvard:es
+  ```
 
 ---
 
-## 🧰 Tech Stack
+## 🤖 AI Agent Harness (Gemini & Multi-Agent)
 
-- **Node.js**
-- **PDF generation library** (such as `pdfkit` or `reportlab`, depending on your implementation)
-- **JavaScript / ES Modules**
+This repository includes a specialized AI harness:
+- **`GEMINI.md`**: Complete system context, synchronization rules, and layout constraints for Gemini and Antigravity.
+- **`AGENTS.md`**: Universal agent operational guidelines.
+- **`.agents/rules/`**: Progressive rule definitions for autonomous pair programming.
 
 ---
-
-````
 
 ### Social Media Banners
 
@@ -149,4 +153,3 @@ This command will:
 **Manuel Morales**
 Full Stack Developer — MERN | Azure | PostgreSQL | Laravel | WordPress
 [LinkedIn](https://www.linkedin.com/in/manuel-esteban-morales-zuarez-68573b189/)
-````

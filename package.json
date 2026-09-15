@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node generate-all-cvs.js --validate",
+    "build:all": "node generate-all-cvs.js",
+    "build:cv:en": "node generate-pdf.js",
+    "build:cv:es": "node es/index.js",
+    "build:cv:es:short": "node es/index-short.js",
     "build:harvard": "node generate-harvard-pdf.js",
     "build:harvard:es": "node generate-harvard-pdf.js es",
     "build:diagram": "node generate-diagram.js",
     "generate:banner:en": "node generate-banners.js en",
     "generate:banner:es": "node generate-banners.js es",
     "generate:recommendation:en": "node generate-recommendation.js",
-    "generate:recommendation:es": "node es/generate-recommendation.js"
+    "generate:recommendation:es": "node es/generate-recommendation.js",
+    "validate": "node generate-all-cvs.js --validate",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
