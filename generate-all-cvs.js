@@ -5,25 +5,59 @@
  * to render and validate all Curriculum Vitae formats across English and Spanish.
  *
  * Usage:
- *   node generate-all-cvs.js              # Generate all CVs and report summary
- *   node generate-all-cvs.js --validate   # Generate and enforce page count budgets
- *   node generate-all-cvs.js --en         # Generate English CVs only
- *   node generate-all-cvs.js --es         # Generate Spanish CVs only
+ *   node generate-all-cvs.js                           # Generate all CVs and report summary
+ *   node generate-all-cvs.js --validate                # Generate and enforce page count budgets
+ *   node generate-all-cvs.js harvard                   # Generate Harvard formats (EN & ES)
+ *   node generate-all-cvs.js standard                  # Generate Standard formats (EN & ES)
+ *   node generate-all-cvs.js en                        # Generate English CVs only
+ *   node generate-all-cvs.js es                        # Generate Spanish CVs only
+ *   node generate-all-cvs.js harvard en                # Generate Harvard format in English only
+ *   node generate-all-cvs.js standard es               # Generate Standard format in Spanish only
+ *   node generate-all-cvs.js create                    # Compiles Harvard & Standard (4 outputs)
+ *   node generate-all-cvs.js --source-dir <dir>        # Read HTML sources from staging dir (e.g. .temp)
  */
 
 const puppeteer = require('puppeteer')
 const path = require('path')
 const fs = require('fs')
 
-const args = process.argv.slice(2)
-const isValidateMode = args.includes('--validate') || args.includes('--check')
-const filterEn = args.includes('--en')
-const filterEs = args.includes('--es')
+const rawArgs = process.argv.slice(2)
+const normalizedArgs = rawArgs.map((a) => a.toLowerCase().replace(/^--?/, ''))
+
+const isValidateMode = normalizedArgs.includes('validate') || normalizedArgs.includes('check')
+const filterHarvard = normalizedArgs.includes('harvard')
+const filterStandard = normalizedArgs.includes('standard')
+const filterShort = normalizedArgs.includes('short')
+const filterEn = normalizedArgs.includes('en')
+const filterEs = normalizedArgs.includes('es')
+const isCreateCommand = normalizedArgs.includes('create')
+
+// Source directory override (e.g. .temp or custom staging path)
+let sourceDir = __dirname
+const sourceDirFlagIndex = rawArgs.findIndex((a) => a === '--source-dir' || a === '--temp')
+if (sourceDirFlagIndex !== -1) {
+  if (rawArgs[sourceDirFlagIndex] === '--temp') {
+    sourceDir = path.resolve(__dirname, '.temp')
+  } else if (rawArgs[sourceDirFlagIndex + 1]) {
+    sourceDir = path.resolve(__dirname, rawArgs[sourceDirFlagIndex + 1])
+  }
+}
+
+// Output directory override (e.g. dist/ or custom path)
+let outputDir = __dirname
+const outputDirFlagIndex = rawArgs.findIndex((a) => a === '--output-dir' || a === '--out')
+if (outputDirFlagIndex !== -1 && rawArgs[outputDirFlagIndex + 1]) {
+  outputDir = path.resolve(__dirname, rawArgs[outputDirFlagIndex + 1])
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true })
+  }
+}
 
 const CV_CONFIGS = [
   {
     id: 'resume-en',
     name: 'Standard CV (English)',
+    formatType: 'standard',
     source: 'index.html',
     output: 'manuel-morales-resume.pdf',
     lang: 'en',
@@ -44,6 +78,7 @@ const CV_CONFIGS = [
   {
     id: 'resume-es',
     name: 'Standard CV (Spanish - Long Canvas)',
+    formatType: 'standard',
     source: 'es/index.html',
     output: 'manuel-morales-resume-es.pdf',
     lang: 'es',
@@ -60,6 +95,7 @@ const CV_CONFIGS = [
   {
     id: 'resume-es-short',
     name: 'Short Resume (Spanish - Single Page)',
+    formatType: 'short',
     source: 'es/index-short.html',
     output: 'manuel-morales-resume-es-short.pdf',
     lang: 'es',
@@ -81,6 +117,7 @@ const CV_CONFIGS = [
   {
     id: 'harvard-en',
     name: 'Harvard Format (English ATS)',
+    formatType: 'harvard',
     source: 'harvard-index.html',
     output: 'manuel-morales-harvard.pdf',
     lang: 'en',
@@ -101,6 +138,7 @@ const CV_CONFIGS = [
   {
     id: 'harvard-es',
     name: 'Harvard Format (Spanish ATS)',
+    formatType: 'harvard',
     source: 'es/harvard-index.html',
     output: 'manuel-morales-harvard-es.pdf',
     lang: 'es',
@@ -140,12 +178,32 @@ function formatBytes(bytes) {
 
 async function run() {
   const startTime = Date.now()
-  let targetConfigs = CV_CONFIGS
+  let targetConfigs = [...CV_CONFIGS]
 
+  const isFiltered = filterHarvard || filterStandard || filterShort || filterEn || filterEs || isCreateCommand
+  const includeShort = filterShort || (!isFiltered && !isCreateCommand)
+
+  if (!includeShort) {
+    targetConfigs = targetConfigs.filter((c) => c.id !== 'resume-es-short')
+  }
+
+  // Filter by format
+  if (filterHarvard && !filterStandard && !filterShort) {
+    targetConfigs = targetConfigs.filter((c) => c.formatType === 'harvard')
+  } else if (filterStandard && !filterHarvard) {
+    targetConfigs = targetConfigs.filter((c) => c.formatType === 'standard')
+  } else if (filterShort) {
+    targetConfigs = targetConfigs.filter((c) => c.formatType === 'short')
+  } else if (isCreateCommand) {
+    // Default create: compiles Harvard (EN/ES) and Standard (EN/ES) [4 outputs total]
+    targetConfigs = targetConfigs.filter((c) => c.formatType === 'harvard' || c.formatType === 'standard')
+  }
+
+  // Filter by language
   if (filterEn && !filterEs) {
-    targetConfigs = CV_CONFIGS.filter((c) => c.lang === 'en')
+    targetConfigs = targetConfigs.filter((c) => c.lang === 'en')
   } else if (filterEs && !filterEn) {
-    targetConfigs = CV_CONFIGS.filter((c) => c.lang === 'es')
+    targetConfigs = targetConfigs.filter((c) => c.lang === 'es')
   }
 
   console.log(`\n📄 CV Generator & Harness Runner`)
@@ -161,8 +219,13 @@ async function run() {
   let hasErrors = false
 
   for (const config of targetConfigs) {
-    const sourcePath = path.resolve(__dirname, config.source)
+    let sourcePath = path.resolve(sourceDir, config.source)
+    if (!fs.existsSync(sourcePath)) {
+      sourcePath = path.resolve(__dirname, config.source)
+    }
     const fileUrl = 'file:///' + sourcePath.replace(/\\/g, '/')
+    const outputPath = path.resolve(outputDir, config.output)
+    const effectivePdfOptions = { ...config.pdfOptions, path: outputPath }
 
     process.stdout.write(`  Rendering [${config.lang.toUpperCase()}] ${config.name}... `)
 
@@ -172,9 +235,8 @@ async function run() {
       }
 
       await page.goto(fileUrl, { waitUntil: 'networkidle0' })
-      await page.pdf(config.pdfOptions)
+      await page.pdf(effectivePdfOptions)
 
-      const outputPath = path.resolve(__dirname, config.output)
       const stats = fs.statSync(outputPath)
       const pageCount = getPdfPageCount(outputPath)
 
@@ -189,8 +251,8 @@ async function run() {
 
       results.push({
         name: config.name,
-        source: config.source,
-        output: config.output,
+        source: path.relative(__dirname, sourcePath),
+        output: path.relative(__dirname, outputPath),
         pages: pageCount,
         maxPages: config.maxPages,
         size: formatBytes(stats.size),
