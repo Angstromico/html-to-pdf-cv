@@ -16,7 +16,7 @@
     "generate:recommendation:en": "node generate-recommendation.js",
     "generate:recommendation:es": "node es/generate-recommendation.js",
     "validate": "node generate-all-cvs.js --validate",
-    "create": "node generate-all-cvs.js create",
+    "create": "node create.js",
     "start": "node server.js"
   },
   "keywords": [],
