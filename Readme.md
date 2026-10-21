@@ -9,7 +9,9 @@ It’s currently tailored for personal use but may evolve into a more general to
 
 - 📄 Generates your CV as a **PDF**
 - 🌍 Supports **English** and **Spanish** versions
-- ⚙️ Simple to run using Node.js
+- 🎯 Dynamic target selection with the `create` command (`harvard`, `standard`, `en`, `es`)
+- 🧪 Automated page budget validation (zero-overflow verification)
+- ⚙️ Simple to run using Node.js or Bun
 - 🧩 Clean and extensible structure for future enhancements
 
 ---
@@ -28,9 +30,42 @@ npm install
 
 ## 💡 Usage
 
-### Unified Build & Validation (Recommended)
+### Dynamic `create` Command (Recommended for Tailored & Filtered Builds)
 
-To build **all CV versions** simultaneously in ~10 seconds:
+The `create` CLI command compiles exact targets resolved from format and language flags regardless of argument order. It automatically detects and compiles from the `.temp/` staging directory if custom tailored files are present, falling back to base templates cleanly:
+
+```bash
+# Direct Node execution
+node create [format] [language]
+
+# Or via package scripts
+npm run create [format] [language]
+bun run create [format] [language]
+
+# Or directly in PowerShell / Windows CMD
+.\create [format] [language]
+```
+
+#### Build Target Matrix
+
+| Command | Targets Generated | Output Count |
+| :--- | :--- | :--- |
+| `node create` | Harvard (EN/ES) & Standard (EN/ES) | **4 outputs** |
+| `node create harvard` | Harvard Format only (EN & ES) | **2 outputs** |
+| `node create standard` | Standard Format only (EN & ES) | **2 outputs** |
+| `node create en` | English CVs only (Harvard & Standard) | **2 outputs** |
+| `node create es` | Spanish CVs only (Harvard & Standard) | **2 outputs** |
+| `node create harvard en` | Strictly Harvard format in English | **1 output** |
+| `node create standard es` | Strictly Standard format in Spanish | **1 output** |
+
+> **Note for Bun users:**  
+> Use `bun run create [flags]` or `bun ./create [flags]`. Running `bun create [name]` invokes Bun's built-in project template initializer instead of project scripts.
+
+---
+
+### Unified Build & Validation (All 5 Documents)
+
+To build **all 5 canonical CV versions** simultaneously in ~10 seconds:
 
 ```bash
 npm run build:all
@@ -43,6 +78,8 @@ npm run validate
 # or
 npm test
 ```
+
+---
 
 ### Individual CV Generation
 
@@ -72,6 +109,7 @@ npm test
 ## 🤖 AI Agent Harness (Gemini & Multi-Agent)
 
 This repository includes a specialized AI harness:
+- **`ask.md`**: Behavioral specification for the autonomous `create` workflow (job description ingestion, tailored CV staging, and execution).
 - **`GEMINI.md`**: Complete system context, synchronization rules, and layout constraints for Gemini and Antigravity.
 - **`AGENTS.md`**: Universal agent operational guidelines.
 - **`.agents/rules/`**: Progressive rule definitions for autonomous pair programming.
@@ -132,7 +170,7 @@ This command will:
 
 ## 🧰 Tech Stack
 
-- **Node.js**
+- **Node.js** & **Bun**
 - **Puppeteer** (for PDF & Image generation)
 - **HTML/CSS** (for styling CVs and Banners)
 - **docx** (for DOCX generation)
@@ -150,6 +188,6 @@ This command will:
 
 ## 👨‍💻 Author
 
-**Manuel Morales**
-Full Stack Developer — MERN | Azure | PostgreSQL | Laravel | WordPress
+**Manuel Morales**  
+Full Stack Developer — MERN | Azure | PostgreSQL | Laravel | WordPress  
 [LinkedIn](https://www.linkedin.com/in/manuel-esteban-morales-zuarez-68573b189/)
